@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(function(){
+            var user_id="admin";          //db에서 가져옴
+            $("#id").val(user_id);
+            var data_hobby="game,book";   // db에서 가져옴.
+            $("input:checkbox[name=hobby]").each(function(){
+                // 속성값이 game,book이라는 것을 가지고 있느냐?
+                
+                // game,book. game,golf,book,run,swim
+                if(data_hobby.indexOf(this.value) != -1){
+                    this.checked = true;
+                }
+            });
+
+
+
+
+
+            $("#btn").click(function(){
+                //alert("테스트");
+                //alert($("input:checkbox").length);
+                alert("선택체크박스 : "+ $("input:checkbox[name=accept]:checked").length);
+                $("input:checkbox[name=accept]").each(function(){
+                    //alert("선택체크박스 : "+ $("input:checkbox[name=accept]:checked").length);
+                    if(this.checked==true){
+                        alert("체크되어 있습니다.");
+                    }else{
+                        alert("체크되어 있지 않습니다.");
+                        this.checked = true;
+                    }
+                });
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+    <h2>회원정보수정</h2>
+    <form action="#">
+        <label>아이디</label>
+        <input type="text" name="id" id="id"><br>
+        <label>약관동의</label><br>
+        <input type="checkbox" name="accept" id="a01" value="a01">
+        <label for="a01">네. 1에 대해서 동의합니다.</label><br>
+        <input type="checkbox" name="accept" id="a02" value="a02">
+        <label for="a02">네. 2에 대해서 동의합니다.</label>
+        <br><br>
+
+        <label>취미</label>
+        <input type="checkbox" name="hobby" id="game" value="game">
+        <label for="game">게임</label>
+        <input type="checkbox" name="hobby" id="golf" value="golf">
+        <label for="golf">골프</label>
+        <input type="checkbox" name="hobby" id="book" value="book">
+        <label for="book">독서</label>
+        <input type="checkbox" name="hobby" id="run" value="run">
+        <label for="run">조깅</label>
+        <input type="checkbox" name="hobby" id="swim" value="swim">
+        <label for="swim">수영</label>
+        <br>
+        <input type="submit" id="btn" value="회원가입등록">
+       
+    </form>
+    
+</body>
+</html>

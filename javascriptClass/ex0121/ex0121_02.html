@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(function(){
+
+            $("#btn").on("click",function(){
+                // $(".li").css({"color":"red","font-size":"20px"});
+                $(".li").css("color","red")
+                .css("font-size","20px");
+
+            });
+
+            $("#btn").click(function(){
+
+            });
+
+
+            // $("#li02").on("click",function(){
+            //     $("#li02").css("color","blue");
+            // });
+            // $("*").css("color","red");
+
+            // $("#btn").on("click",function(){
+            //     $("#p01").css("color","blue");
+            //     $("#p01").css("font-size","20px");
+            // });
+
+
+        });
+
+
+    </script>
+    <style>
+        /* h1{color:red; font-size:20px;} */
+        /* #p01{color:blue; font-size:15px;}
+        .c01{border:1px solid black; width:300px; height:200px;} */
+
+    </style>
+</head>
+<body>
+
+    <ul>
+        <li class="li">네이버</li>
+        <li>다음</li>
+        <li class="li">네이트</li>
+        <li>구글</li>
+    </ul>    
+    <button id="btn">색변경</button>
+    <!-- 버튼을 클릭하면 글자색 red, 글자크기 :20px -->
+
+
+    <!-- <ul>
+        <li>네이버</li>
+        <li id="li02">다음</li>
+        <li>네이트</li>
+        <li>구글</li>
+    </ul> -->
+
+
+
+    <!-- <h1 id="title">제목</h1>
+    <p id="p01">글이 들어갑니다.</p>
+    <div class="c01">박스모델을 의미합니다.</div>
+    <button id="btn">색상변경</button> -->
+    
+</body>
+</html>

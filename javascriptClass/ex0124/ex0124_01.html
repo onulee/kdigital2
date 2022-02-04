@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        label{width:80px; display: inline-block;}
+        input{margin-bottom:10px;}
+        textarea{width:400px; height:200px; vertical-align: top;}
+
+        table,th,td{border:1px solid black; border-collapse: collapse;
+              text-align: center;
+        }
+        th,td{height:40px;}
+        table{width:1200px; }
+        tr td{cursor: pointer;}
+    </style>
+    <script>
+        var num=0;   //전역변수
+        $(function(){
+            $("#num").val("1"); 
+            //등록버튼을 클릭시 실행
+            $("#btn").click(function(){
+                //제목 값이 들어가 있는지 확인
+                if($.trim($("#title").val())==""){
+                    alert("제목을 입력하셔야 등록이 가능합니다.");
+                    $("#title").focus();
+                    return false;
+                }
+                // 각각 input 데이터 값을 가져오기
+                num = Number($("#num").val()); 
+                var id = $("#id").val(); 
+                var title = $("#title").val(); 
+                var content = $("#content").val(); 
+                var c_date = $("#c_date").val(); 
+
+                //html소스 저장
+                var in_html="";
+                //in_html += "<tr  id='"+ num +"' onclick='hitCount("+num+")'>"; 
+                in_html += "<tr  id='"+ num +"'>"; 
+                in_html += "<td class='c01' >"+ num +"</td>"; 
+                in_html += "<td>"+ title +"</td>"; 
+                in_html += "<td>"+ c_date +"</td>"; 
+                in_html += "<td>"+ id +"</td>"; 
+                in_html += "<td>0</td>"; 
+                in_html += "</tr>"; 
+                
+                //데이터 html을 tbody에 넣기
+                if(num==1) $("#ctxt").html(in_html); //#ctxt 내 모든 html삭제후 추가
+                else $("#ctxt").prepend(in_html);           //#ctxt html 상위에 추가
+
+                //번호를 1씩 증가시킴
+                num++;  
+                
+                // 데이터를 입력한 후 초기화
+                $("#num").val(num);     //2,3,4,5,6,7,8...
+                var id = $("#id").val(""); 
+                var title = $("#title").val(""); 
+                var content = $("#content").val(""); 
+                var c_date = $("#c_date").val(""); 
+
+            }); //"#btn"
+
+            $(".chit").click(function(){
+                alert("class호출");
+                var index = $(".chit").index(this); //
+                alert("index : ",index);
+                //alert($("#"+num+" td:nth-child(5)").attr("id"));
+            });
+            $(".c01").click(function(){
+                alert("class호출");
+                console.log("1");
+               
+            });
+            
+            
+        });
+        
+        // function hitCount(num){
+        //     alert("호출된 번호 : "+num);
+        //     alert("조회수 값 : "+$("#"+num+" td:nth-child(5)").text());
+        //     $("#"+num+" td:nth-child(5)").text(Number($("#"+num+" td:nth-child(5)").text())+1);
+        // }
+
+
+
+    </script>
+</head>
+<body>
+    <h2>게시판</h2>
+    <form>
+        <label>번호</label>
+        <input type="text" name="num" id="num" readonly><br>
+        <label>작성자</label>
+        <input type="text" name="id" id="id"><br>
+        <label>제목</label>
+        <input type="text" name="title" id="title"><br>
+        <label>내용</label>
+        <textarea name="content" id="content"></textarea><br>
+        <label>날짜</label>
+        <input type="date" name="c_date" id="c_date"><br>
+        <input type="button" id="btn" value="등록">
+        <input type="button" class="c02" value="class버튼">
+    </form>
+    <br><br>
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>날짜</th>
+            <th>작성자</th>
+            <th>조회수</th>
+        </tr>
+        <!-- 글등록 -->
+        <tbody id="ctxt">
+            <tr>
+                <td colspan="5">현재 데이터가 없습니다.</td>
+            </tr>
+        </tbody>
+        
+    </table>
+    
+</body>
+</html>

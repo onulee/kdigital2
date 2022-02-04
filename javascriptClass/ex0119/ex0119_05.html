@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,td{border:1px solid black; border-collapse: collapse;}
+    </style>
+</head>
+<body>
+    <form action="#" method="get">
+        <label>숫자1</label>
+        <input type="text" name="num1" id="num1"><br>
+        <label>숫자2</label>
+        <input type="text" name="num2" id="num2"><br>
+        <button type="button" onclick="f_cal()">4칙연산</button>
+    </form>
+    <table>
+        <tr>
+            <td>더하기 결과값</td>
+            <td id="t01">값이 나옴.</td>
+        </tr>
+        <tr>
+            <td>빼기 결과값</td>
+            <td id="t02"></td>
+        </tr>
+        <tr>
+            <td>곱하기 결과값</td>
+            <td id="t03"></td>
+        </tr>
+        <tr>
+            <td>나누기 결과값</td>
+            <td id="t04"></td>
+        </tr>
+    </table>
+
+
+    <script>
+        function f_cal(){
+            // 호출해서 데이터값을 num1, num2에 넣을것
+           var result1 = [];
+           //2수를 가져옴.
+           var num1 = Number(document.getElementById("num1").value);
+           var num2 = Number(document.getElementById("num2").value);
+
+           result1 = cal(num1,num2);
+           document.getElementById("t01").innerText = result1[0];
+           document.getElementById("t02").innerText = result1[1];
+           document.getElementById("t03").innerText = result1[2];
+           document.getElementById("t04").innerText = result1[3];
+           //
+        }
+
+
+        function cal(num1,num2){
+            // 4칙연산을 해서 4개의 값을 리턴 방법 무엇일까요?? 
+            var result1 =[];
+            result1[0] = num1+num2;
+            result1[1] = num1-num2;
+            result1[2] = num1*num2;
+            result1[3] = num1/num2;
+            return result1;
+        }
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

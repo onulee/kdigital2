@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var num = prompt("성적을 입력하세요.");
+        // 90이상이면 A
+        // 80이상이면 B, C, D, F 출력되도록 해보세요.
+        // 97점이상 A+ | 96,95,94 A | 93이하 A-
+        // 87점이상 B+, 83이하 B-
+        if(num>=90){
+            if(num>=97){
+                document.write("A+");  
+            }else if(num>=94){
+                document.write("A");
+            }else{
+                document.write("A-");
+            }
+            //100보다 큰수 입니다.
+        }else if(num>=80){
+            document.write("B");  
+            if(num>=87){
+                document.write("+");
+            }else if(num<=83){
+                document.write("-");
+            }
+        }else if(num>30){
+            //30보다 큰수입니다.
+        }else{
+            //30이하의 수입니다.
+        }
+
+
+    </script>
+    
+</body>
+</html>

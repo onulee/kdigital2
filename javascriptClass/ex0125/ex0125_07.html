@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var today = new Date(); //date객체 2022-01-25
+        var nowYear = today.getFullYear(); //2022
+        //2022/12/31 남은 날짜가 얼마나 남았는지?
+        var dDay = new Date(nowYear,11,31); //2022-12-31
+
+        //alert(dDay.getTime());
+        var diffDay = dDay.getTime() - today.getTime();
+        var resultDay = Math.ceil(diffDay/(1000*60*60*24));
+
+        document.write("D-Day까지 남은 기간 : ",resultDay);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

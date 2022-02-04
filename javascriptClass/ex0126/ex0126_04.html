@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(function(){
+            $.ajax({
+                url:"MOCK_DATA.json",   //보낼주소
+                type:"get",
+                data:{"id":"aaa","numOfRows":"20"},
+                dataType:"json",
+                success:function(data){
+                    alert("로그인성공"+data[0].boardNum);
+
+                    let data_html =""; //data를 1개의 파일로 변경
+                    for(var i in data){
+                        data_html += "<tr>";
+                        data_html += "<td>"+data[i].boardNum+"</td>";
+                        data_html += "<td>"+data[i].title+"</td>";
+                        data_html += "<td>"+data[i].id+"</td>";
+                        data_html += "<td>"+data[i].date+"</td>";
+                        data_html += "<td>"+data[i].hit+"</td>";
+                        data_html += "</tr>";
+                    }
+                    $("#content").html(data_html);
+                    
+                },
+                error:function(){
+                    alert("실패");
+                }
+            });
+        });
+    </script>
+    <style>
+        table,th,td{border:1px solid black; border-collapse: collapse;}
+        th,td{height:40px; text-align: center;
+        
+        }
+        th:nth-child(1){width:100px;}
+        th:nth-child(2){width:300px;}
+        th:nth-child(3){width:100px;}
+        th:nth-child(4){width:100px;}
+        th:nth-child(5){width:80px;}
+    </style>
+</head>
+<body>
+    <h2>회원리스트</h2>
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>날짜</th>
+            <th>조회수</th>
+        </tr>
+        <tbody id="content">
+            
+        </tbody>
+    </table>
+    
+</body>
+</html>

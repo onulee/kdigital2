@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(function(){
+            $("#product1").change(function(){
+                //alert("개수 : "+$("#product1 option:selected").attr("value"));
+                //alert("값 : "+$("#product1 option:selected").text());
+                // db에서 재고 정보 가지고 옴.
+                var s_size = $("#product1 option:selected").text();
+                var num = Number($("#product1 option:selected").attr("value"));
+                var data_html="";
+                for(var i=1;i<=num;i++){
+                    data_html += "<option value='"+s_size+"_"+i+"'>"+i+"</option>";
+                }
+                $("#product2").html(data_html);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h3>원하는 발사이즈를 선택해주세요.</h3>
+    <label>사이즈</label>
+    <select id="product1">
+        <option value="">::사이즈선택::</option>
+        <option value="7">240</option>
+        <option value="4">250</option>
+        <option value="5">260</option>
+    </select>mm
+    <label>개수</label>
+    <select id="product2">
+        <option value="240_1">::선택::</option>
+        <option value="240_7">::선택::</option>
+        <option value="250_1">::선택::</option>
+        <option value="250_4">::선택::</option>
+    </select>
+    
+</body>
+</html>

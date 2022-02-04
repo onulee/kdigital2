@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="http://www.naver.com" method="get" name="frm">
+        <label>아이디</label>
+        <input type="text" name="userId" id="userId">
+        <br>
+        <label>패스워드</label>
+        <input type="password" name="userPw" id="userPw">
+        <br>
+        <input type="button" onclick="idCheck()" value="확인">
+        <!-- <button type="button" onclick="">확인</button> -->
+    </form>
+
+
+
+    <script>
+         // inputbox -> id, pw 
+         // id==admin && pw==1111
+         // 로그인성공, 로그인실패 다시 입력해주세요. id->focus
+
+         function idCheck(){
+             alert(document.frm.userId.value);
+             var userId = document.getElementById("userId").value;
+             var userPw = document.getElementById("userPw").value;
+             //파이썬에서 oracle db호출해서 userId,userPw 비교
+            if(userId=="admin" && userPw=="1111"){
+                alert("아이디와 패스워드가 일치합니다.");
+                document.frm.submit();
+
+                // location.href="http://www.naver.com"; //페이지 링크
+            }else{
+                alert("아이디와 패스워드가 일치하지 않습니다.");
+                document.getElementById("userId").value="";
+                document.getElementById("userPw").value="";
+                document.getElementById("userId").focus();
+                return false;
+            }
+
+         }
+
+        //  var userId = prompt("아이디를 입력하세요.");
+        //  var userPw = prompt("패스워드를 입력하세요.");
+
+         
+         //파이썬에서 oracle db호출해서 userId,userPw 비교
+        //  if(userId=="admin" && userPw=="1111"){
+        //      alert("아이디와 패스워드가 일치합니다.");
+        //      location.href="http://www.naver.com"; //페이지 링크
+        //  }else{
+        //      alert("아이디와 패스워드가 일치하지 않습니다.");
+        //      location.reload(); //새로고침
+        //  }
+
+    </script>
+    
+</body>
+</html>

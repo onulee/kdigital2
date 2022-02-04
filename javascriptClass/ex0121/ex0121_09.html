@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function(){
+            var num=0;
+            var auto1;
+            var check=true;
+            $("#count1").click(function(){
+                if(check){
+                    auto1 = setInterval(function(){
+                        num++;
+                        $("#screen").text(num);
+                    },1000);
+                    $("div").css("border","0px solid red");
+                    check=false;
+                }
+            });
+            $("#count2").click(function(){
+                clearInterval(auto1);
+                $("div").css("border","3px solid red");
+                check=true;
+            });
+        });
+    </script>
+    <title>Document</title>
+    <style>
+        div{width:50px; height:50px; text-align:center; font-size:30px; }
+    </style>
+</head>
+<body>
+    <h2>카운드</h2>
+    <div id="screen">0</div>
+    <button id="count1">시작하기</button>
+    <button id="count2">멈추기</button>
+
+    
+</body>
+</html>

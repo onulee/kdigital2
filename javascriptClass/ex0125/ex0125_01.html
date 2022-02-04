@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        label{width:40px; display: inline-block;}
+        input{width:200px; margin-bottom:10px;}
+        input[type="checkbox"]{width:20px;}
+        table,th,td{border:1px solid black; border-collapse: collapse;
+              text-align: center;
+        }
+        table{width:1200px; }
+        th,td{height:40px;}
+        tr td{cursor: pointer;}
+    </style>
+    <script>
+        var num=1;   //전역변수
+        $(function(){
+            var user_check=0; //중복체크 확인
+            //등록버튼을 클릭시 실행
+            $("#btn").click(function(){
+                //중복체크 버튼이 클릭이 되었는지 확인
+                // if(user_check==0) {
+                //     alert("중복체크 버튼을 클릭하셔야 등록이 가능합니다.");
+                //     return false;
+                // }
+
+                // 동의 체크된 개수 확인
+                // if($("input:checkbox[name=agree]:checked").length<2){
+                //     alert("동의를 체크하셔야 등록이 가능합니다.");
+                //     return false;
+                // }
+                // 체크박스를 모두 가져와서 확인 하는 방법
+                // $("input:checkbox[name=agree]").each(function(){
+                //     if(this.checked==false){
+                //         alert("동의를 하셔야 합니다.");
+                //         this.checked = true;
+                //     }
+                // });
+
+                //제목 값이 들어가 있는지 확인
+                if($.trim($("#title").val())==""){
+                    alert("제목을 입력하셔야 등록이 가능합니다.");
+                    $("#title").focus();
+                    return false;
+                }
+                // 각각 input 데이터 값을 가져오기
+                var id = $("#id").val(); 
+                var title = $("#title").val(); 
+                var content = $("#content").val(); 
+                var c_date = $("#c_date").val(); 
+
+                //html소스 저장
+                var in_html="";
+                in_html += "<tr id='"+ num +"' onclick='hitCount("+num+")'>"; 
+                //in_html += "<tr id='"+ num +"'>"; 
+                in_html += "<td>"+ num +"</td>"; 
+                in_html += "<td>"+ title +"</td>"; 
+                in_html += "<td>"+ c_date +"</td>"; 
+                in_html += "<td>"+ id +"</td>"; 
+                in_html += "<td>0</td>"; 
+                in_html += "<td><button onclick='del("+num+")'>삭제</button></td>"; 
+                in_html += "</tr>"; 
+                
+                //데이터 html을 tbody에 넣기
+                if(num==1) $("#ctxt").html(in_html); //#ctxt 내 모든 html삭제후 추가
+                else $("#ctxt").prepend(in_html);           //#ctxt html 상위에 추가
+
+                //번호를 1씩 증가시킴
+                num++;  
+                //중복체크 초기화
+                user_check=0;
+
+                //체크박스 초기화
+                $("input:checkbox[name=agree]").each(function(){
+                        this.checked = false;
+                });
+
+                
+                // 데이터를 입력한 후 초기화
+                $("#num").val(num);     //2,3,4,5,6,7,8...
+                var id = $("#id").val(""); 
+                var title = $("#title").val(""); 
+                var content = $("#content").val(""); 
+                var c_date = $("#c_date").val(""); 
+
+            }); //"#btn"
+
+            $("#btn_check").click(function(){
+                alert("중복체크 확인을 하셨습니다.");
+                user_check = 1;
+            });
+            
+        });
+        
+        function hitCount(num){
+            alert("호출된 번호 : "+num);
+            alert("조회수 값 : "+$("#"+num+" td:nth-child(5)").text());
+            $("#"+num+" td:nth-child(5)").text(Number($("#"+num+" td:nth-child(5)").text())+1);
+        }
+
+        function del(num){
+            alert("호출된 번호 : "+num);
+            $("#"+num).remove();
+        }
+
+    </script>
+</head>
+<body>
+    <h2>게시판</h2>
+    <form>
+        
+        <label>ID</label>
+        <input type="text" name="id" id="id"> <button type="button" id="btn_check">중복확인</button><br>
+        <label>제목</label>
+        <input type="text" name="title" id="title">
+        <label>동의</label><input type="checkbox" name="agree" id="ch01" value="ch01">
+        <br>
+        <label>날짜</label>
+        <input type="date" name="c_date" id="c_date">
+        <label>동의</label><input type="checkbox" name="agree" id="ch02" value="ch02">
+        <br>
+        <input type="button" id="btn" value="등록">
+    </form>
+    <br><br>
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>날짜</th>
+            <th>작성자</th>
+            <th>조회수</th>
+            <th>삭제</th>
+        </tr>
+        <!-- 글등록 -->
+        <tbody id="ctxt">
+            <tr>
+                <td colspan="6">현재 데이터가 없습니다.</td>
+            </tr>
+        </tbody>
+        
+    </table>
+    
+</body>
+</html>

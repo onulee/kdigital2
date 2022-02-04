@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/prefixfree.min.js"></script>
+    <style>
+        div{
+            width:80%; height:400px;
+            /* border:1px solid black; */
+            margin:0 auto;
+            column-width:100px;
+            column-rule:2px dotted black;
+            text-align:justify;
+        }
+        #d01{column-span:all;
+            column-count:1;
+        }
+        table{width:800px; margin:50px auto; }
+        table,th,td{border:1px solid black;
+            border-collapse: collapse;
+            
+        }
+        td{width:200px; height:80px; 
+           text-align:center; vertical-align: middle;
+        }
+        thead{background:#efefef; }
+
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>번호</td>
+                <td>제목</td>
+                <td>리조트</td>
+                <td>등록일자</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>129</td>
+                <td>2022 설명절 선물세트</td>
+                <td>리솜리조트</td>
+                <td>2022-01-12</td>
+            </tr>
+        </tbody>
+    </table>
+    <br><br>
+
+    <div>
+        [파이낸셜뉴스] 공정거래위원회가 13일 유럽연합(EU) 집행위원회의 현대중공업-대우조선해양 간 기업결합 불허 결정에 대해 "원칙대로 심의를 진행할 예정이다"고 밝혔다.
+        공정위는 "오늘(13일) 오후 9시(현지시각 오후 1시) EU는 현대중공업-대우조선해양 간 기업결합 불허 결정을 발표했다"며 이같이 밝혔다.
+        공정위는 두 기업 간 기업결합심사를 2년 반째 진행 중이다. 신고대상 6개국(한국, EU, 중국, 일본, 싱가포르, 카자흐스탄) 중 가장 먼저 심사 신청서가 접수됐으나 아직 일본과 함께 심사 완료 전 단계이다. 현재는 현대중공업 그룹 측에 결과를 담은 심사보고서가 발송돼 있다.
+        EU 경쟁당국은 현대중공업이 독점 방지 대책을 제시하지 않은 점 등을 이유로 불허 결정을 내린 것으로 알려졌다. 우리나라 공정거래위원회는 EU 결정에도 원칙대로 심의를 진행한다는 방침이다. 그러나 양사 합병이 무산된 만큼 현대중공업은 기업결합심사를 철회할 것으로 보인다.
+        <div id="d01">
+            공정위 관계자는 "해외 경쟁당국에서 기업결합을 불허하는 경우 당사자가 심사를 철회하는 것이 일반적"이라면서 "철회서가 접수되면 양사 합병 심사 절차는 종료된다"고 말했다.
+            한편 2019년 산업은행과 현대중공업은 당시 어려운 조선산업 업황 등을 고려해 대우조선해양과 현대중공업 간 기업결합을 추진하기로 합의하고, 경쟁당국의 기업결합 심사 등 필요한 절차를 추진해 왔다.
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {margin:0; padding:0;}
+        header{ width:100%; height:90px;
+            box-sizing: border-box;
+            border:4px solid black;
+            background:blue;}
+        nav{ width:100%; height:120px;
+            box-sizing: border-box;
+            border:4px solid black;
+            background:ivory;
+            display: none;
+            
+        }
+        section{
+            width:100%; height:500px;
+            background:yellow; 
+            box-sizing: border-box;
+            border:4px solid black;
+            background:url("../images/img_re_main_slide_01_pc_200603.jpg") no-repeat;
+            background-size:cover;
+            float:left;}
+
+        /* aside{
+            width:30%; height:500px;
+            background:green;
+            box-sizing: border-box;
+        border:4px solid black;
+        float:right;
+        } */
+        footer{
+            width:100%; height:100px;
+            background:coral;
+            box-sizing: border-box;
+            border:4px solid black;
+            clear:both;
+        }
+        img{max-width:100%;}
+
+        @media screen and (max-width:1000px) {
+            header{ display: none;}
+            nav{display:block;}
+            section{
+                background:url("../images/bts.jpg") no-repeat;
+                background-size:cover;
+            }
+        }
+       
+    </style>
+
+</head>
+<body>
+    <header>브랜드  단지정보 커뮤니티 고객서비스</header>
+    <nav>햄버거버튼으로 교체</nav>
+    <section>
+        
+    </section>
+    <footer></footer>
+</body>
+</html>

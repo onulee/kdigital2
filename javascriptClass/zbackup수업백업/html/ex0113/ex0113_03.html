@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#" method="get" name="frm1">
+        <input type="hidden" name="ip" value="222.112.146.109">
+        <label>고객번호</label>
+        <span>0001</span>
+        <br>
+        <!-- <label>고객번호</label>
+        <input type="text" name="userno" id="userno" maxlength="8" value="0001" readonly >
+        <br> -->
+        <label>아이디</label>
+        <input type="text" name="userid" id="userid" maxlength="8" autofocus required >
+        <br>
+        <label>비밀번호</label>
+        <input type="password" name="userpw" id="userpw" placeholder="비밀번호는 8자리 이상">
+        <br>
+        <label>성별</label>
+        <input type="radio" name="gender" id="male" value="male">
+        <label for="male">남자</label>
+        <input type="radio" name="gender" id="female" value="female" checked>
+        <label for="female">여자</label>
+        <br>
+        <label>취미</label>
+        <input type="checkbox" name="hobby" id="swim" value="swim">
+        <label for="swim">수영</label>
+        <input type="checkbox" name="hobby" id="golf" value="golf">
+        <label for="golf">골프</label>
+        <input type="checkbox" name="hobby" id="game" value="game" checked>
+        <label for="game">게임</label>
+        <input type="checkbox" name="hobby" id="book" value="book">
+        <label for="book">독서</label>
+        <br>
+        <label>비밀번호</label>
+        <input type="date" name="date" id="date">
+        <br>
+        <label>전공</label>
+        <select name="major">
+            <option value="archi">건축공학과</option>
+            <option value="mech">기계공학과</option>
+            <option value="elec">산업공학과</option>
+        </select>
+        <br>
+        <label>년도</label>
+        <select name="birthyear">
+            <option value="1900">1900</option>
+            <option value="1901">1901</option>
+            <option value="1902">1902</option>
+        </select>
+        <br>
+        <textarea name="content" cols="80" rows="20"></textarea>
+        <br>
+        <!-- <input type="image" src="../images/login.jpg"> -->
+        <!-- <input type="submit" value="전송"> -->
+        <button type="submit">
+            <img src="../images/check.png" width="15px">
+            전송</button>
+        <input type="reset" value="취소">
+        <br>
+    </form>
+    
+</body>
+</html>

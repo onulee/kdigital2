@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function(){
+            var num = 2;
+            var num2 = 200;
+            $("li").click(function(){
+                $("p").text($(this).text()+"클릭되었습니다.");
+                $(this).css("color","red");
+                $(this).next().text("클릭됨");
+                $(this).parent().css("border",num+"px solid black");
+                $(this).parent().css("height",num2+"px");
+                num++;
+                num2 = num2+100;
+            });
+
+        });
+    </script>
+    <style>
+        ul{width:200px; height:100px; border:1px solid black;}
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>네이버</li><span></span>
+        <li>다음</li><span></span>
+        <li>네이트</li><span></span>
+        <li>구글</li><span></span>
+    </ul>
+    <p>상단의 리스트를 클릭하세요.</p>
+    
+</body>
+</html>

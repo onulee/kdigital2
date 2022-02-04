@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {margin:0; padding:0;}
+        div{ width:1000px; height:80px; margin:0 auto; }
+        ul>li{ width:155px; height:80px;
+               list-style-type:none;
+               font-size:18px; 
+               text-align: center;
+               box-sizing:border-box;
+               border:1px solid black;
+               padding-top:30px;
+               float:left;
+        }
+        [class~="button"]{
+            background:yellow;
+        }
+        ul li:nth-child(1){width:200px; }
+        ul li:nth-child(2n){background:green;}
+        ul li:first-child{
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+        ul li:last-child{
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <ul id="u01">
+            <li>PRODUCT</li>
+            <p>p가들어갔어요.</p>
+            <li>TECHNOLOGY</li>
+            <li>ESG</li>
+            <li>COMPANY</li>
+        </ul>
+    </div>
+    
+    
+</body>
+</html>

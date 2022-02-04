@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <title>다음주소 api</title>
+    <style>
+        input{height:30px; margin-bottom:10px;}
+        #zip{ width:120px;}
+        label{ width:80px; display:inline-block;}
+        button{ width:150px; height:30px;}
+        #addr1,#addr2{ width:300px;}
+    </style>
+    
+
+
+
+
+</head>
+<body>
+    <h2>다음주소 검색</h2>
+    <form action="#" method="post">
+        <label>우편번호</label>
+        <input type="text" name="zip" id="zip">
+        <button type="button" onclick="openZipSearch()">우편번호 찾기</button><br>
+        <label>주소</label>
+        <input type="text" name="addr1" id="addr1"><br>
+        <label>상세주소</label>
+        <input type="text" name="addr2" id="addr2">
+    </form>
+
+    <script>
+        //button 클릭시 function호출해야 함.
+        function openZipSearch(){
+            alert("다음주소 api호출");
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+                        // server
+                        alert(data.zonecode); //08273
+                    }
+                }).open();
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * { margin:0; padding:0;}
+        table,th,td{ 
+            border-bottom:1px solid #d4d7db; /*  */
+            border-collapse:collapse;   /*   */
+        }
+        table{width:920px; 
+              margin: 0 auto;
+              font-size:14px;   
+              color:#454545;
+              text-align:center;
+              border-top:2px solid #606671;
+            }
+        tr th:nth-child(1), tr td:nth-child(1){
+            border-right:1px solid #eaebed;
+        }    
+        th{ background:#f5f5f5; 
+            height:46px; }
+        td{
+            height:46px; 
+        } 
+        thead{ background:yellow; }   
+
+    </style>
+</head>
+<body>
+    <table>
+        <colgroup>
+          <col style="width:460px;">
+          <col style="width:460px;">
+        </colgroup>
+        <tr>
+            <th>구분</th>
+            <th>입실시간</th>
+        </tr>
+        <tr>
+            <td>성수기, 주말, 연휴, 오션시즌, 스키시즌</td>
+            <td>15:00 ~ 22:00</td>
+        </tr>
+        <tr>
+            <td>비수기, 주중</td>
+            <td>14:00 ~ 22:00</td>
+        </tr>
+    </table>
+
+    <br><br>
+
+
+    <table>
+        <tr>
+            <th colspan="5">1행1열</th>
+        </tr>
+        <tr>
+            <td>2행1열</td>
+            <td>2행2열</td>
+            <td colspan="3">2행3열</td>
+        </tr>
+        <tr>
+            <td colspan="2">3행1열</td>
+            <td>3행3열</td>
+            <td>3행4열</td>
+            <td>3행5열</td>
+        </tr>
+    </table>
+    <br><br>
+
+    <table>
+        <thead>
+            <tr>
+                <td>1행1열</td>
+                <td>1행2열</td>
+                <td>1행3열</td>
+            </tr>
+        </thead>
+        <tr>
+            <td>2행1열</td>
+            <td>2행2열</td>
+            <td>3행3열</td>
+        </tr>
+        <tr>
+            <td>2행1열</td>
+            <td>2행2열</td>
+            <td>3행3열</td>
+        </tr>
+        <tr>
+            <td>2행1열</td>
+            <td>2행2열</td>
+            <td>3행3열</td>
+        </tr>
+    </table>
+    <br><br>
+    <h2>rowspan해보기</h2>
+    <table>
+        <tr>
+            <td>1행1열</td>
+            <td rowspan="2">1행2열</td>
+            <td>1행3열</td>
+            <td>1행4열</td>
+            <td>1행5열</td>
+        </tr>
+        <tr>
+            <td rowspan="2">2행1열</td>
+            <td>3행3열</td>
+            <td rowspan="3">1행4열</td>
+            <td>1행5열</td>
+        </tr>
+        <tr>
+            <td>2행2열</td>
+            <td>3행3열</td>
+            <td>1행5열</td>
+        </tr>
+        <tr>
+            <td>2행1열</td>
+            <td>2행2열</td>
+            <td>3행3열</td>
+            <td>1행5열</td>
+        </tr>
+    </table>
+    <br><br>
+    <table>
+        <tr>
+            <td>1행1열</td>
+            <td>1행2열</td>
+            <td>1행3열</td>
+            <td>1행4열</td>
+            <td>1행5열</td>
+        </tr>
+        <tr>
+            <td>2행1열</td>
+            <td>2행2열</td>
+            <td>3행3열</td>
+            <td>1행4열</td>
+            <td>1행5열</td>
+        </tr>
+        <tr>
+            <td>2행1열</td>
+            <td>2행2열</td>
+            <td>3행3열</td>
+            <td>1행4열</td>
+            <td>1행5열</td>
+        </tr>
+        <tr>
+            <td>2행1열</td>
+            <td>2행2열</td>
+            <td>3행3열</td>
+            <td>1행4열</td>
+            <td>1행5열</td>
+        </tr>
+    </table>
+    <br><br>
+    
+</body>
+</html>

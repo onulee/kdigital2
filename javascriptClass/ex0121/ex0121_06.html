@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // 입력한 값이 8자리 미만이면 8자리이상입력해야 한다고 
+        // red 글자가 나타남
+        // 8자리이상이면 black 정상입력됨.
+        
+        
+        $(function(){
+            $("#id").keyup(function(){
+               $("#s02").text($(this).val().length);
+            });
+
+        });
+
+
+    </script>
+    <title>Document</title>
+    <style>
+        #s01{color:red; font-weight:600; margin-left:10px;}
+    </style>
+</head>
+<body>
+    <form>
+        <label>아이디</label>
+        <input type="text" name="id" id="id"><span id="s01"></span>
+        <br>
+        <br>
+        <label>아이디2</label>
+        <input type="text" name="id2" id="id2"><span id="s02"></span>
+        <br>
+        <br>
+        <button type="button" id="btn">확인</button> 
+    </form>
+</body>
+</html>

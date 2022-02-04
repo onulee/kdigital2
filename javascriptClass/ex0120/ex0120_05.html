@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function login_check(){
+            alert("로그인 체크호출");
+            //자바스크립트 ajax: django를 거쳐서 오라클 db에서 u_id,u_pw 보내서 체크를 받습니다.
+            var u_id = document.getElementById("id").value;
+            var u_pw = document.getElementById("pw").value;
+            if(u_id=="admin"){
+                if(u_pw=="1234"){
+                    alert("로그인 성공");
+                    frm.submit();
+                }else{
+                    alert("패스워드가 일치하지 않습니다. 다시 입력하세요.");
+                    document.getElementById("id").value=""; //데이터 초기화
+                    document.getElementById("pw").value=""; //데이터 초기화
+                    document.getElementById("pw").focus();  //커서 이동
+                }
+            }
+            else{
+                alert("아이디가 존재하지 않습니다. 다시 입력하세요.");
+                document.getElementById("id").value=""; //데이터 초기화
+                document.getElementById("pw").value=""; //데이터 초기화
+                document.getElementById("id").focus();  //커서 이동
+            }
+            return;
+        }
+    </script>
+</head>
+<body>
+    <form action="login_check.html" method="get" name="frm">
+        <label>아이디</label>
+        <input type="text" name="userid" id="id"><br>
+        <label>패스워드</label>
+        <input type="password" name="userpw" id="pw"><br>
+        <input type="button" onclick="login_check()" value="로그인">
+    </form>
+    
+</body>
+</html>

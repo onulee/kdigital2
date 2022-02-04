@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //BMI지수= 몸무게(kg) ÷ (신장(m) × 신장(m))
+        //BMI지수= 몸무게(kg) ÷ (신장(m) × 신장(m))
+        function bmi_result(name,weight,height){
+            if(name=='홍길동')
+                document.getElementById("span01").innerText = cal_result(weight,height);
+            else
+                document.getElementById("span02").innerText = cal_result(weight,height);   
+        }  
+        function cal_result(weight,height){
+            var hheight = height/100;
+            var bmi = weight/(hheight*hheight);
+            var result="";
+            if(bmi>=25)
+                result="비만";
+            else if(bmi>=23)
+                result="과체중";
+            else if(bmi>=18.5)
+                result="정상";
+            else
+                result="저체중";
+            
+            return result;
+        }
+        function bmi_result2(){
+            var name = document.getElementById("name").value;
+            var weight1 = document.getElementById("weight1").value;
+            var height1 = document.getElementById("height1").value;
+
+            var result = cal_result(weight1,height1);
+
+            document.getElementById("bmi_result").innerText = name+" : "+result;
+        }
+    </script>
+    
+    <button onclick="bmi_result('홍길동',80,180)">홍길동</button>
+    <h3>1. 홍길동 BMI지수 : <span id="span01"> </span></h3>
+    <button onclick="bmi_result('이순신',70,167)">이순신</button>
+    <h3>2. 이순신 BMI지수 : <span id="span02"> </span></h3>
+     
+    <h2>3. BMI지수 계산기</h2>
+    <input type="text" name="name" id="name" placeholder="이름을 입력하세요."><br>
+    <input type="text" name="weight1" id="weight1" placeholder="몸무게를 입력하세요."><br>
+    <input type="text" name="height1" id="height1" placeholder="키를 입력(cm로 넣어주세요.)"><br>
+    <button onclick="bmi_result2()">자동계산</button>
+    <table>
+        <tr>
+            <td>bmi지수</td>
+            <td id="bmi_result">결과값 출력</td>
+        </tr>
+    </table>
+</body>
+</html>

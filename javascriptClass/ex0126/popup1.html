@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(function(){
+            //$("#name").val();
+             $("#cInput").val(opener.document.getElementById("pInput").value);
+        });
+        function set_parent(){
+            alert($("#cInput").val());
+            //$("#pInput", opener.document).val($("#cInput").val());  //jquery방법
+            opener.document.getElementById("pInput").value = $("#cInput").val();
+            window.close();
+       }
+
+    </script>
+</head>
+<body>
+    <h2>자식창 ( 팝업 )</h2>
+    <label>아이디 중복체크 확인 :</label>
+    <input type="text" id="cInput" name="cInput">
+    <button onclick="set_parent()">아이디 중복확인</button>
+    <!-- <label>부모창으로 보낼 값 :</label>
+    <input type="text" id="name" name="name"> -->
+
+    
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,td{border:1px solid black; border-collapse: collapse;
+           text-align: center;
+        }
+    </style>
+    <script>
+        function dataOpen(){
+            //alert("버튼 호출 됨");
+            var dataHtml="";
+            for(var i=0;i<10;i++){
+                dataHtml = dataHtml + "<tr>";
+                dataHtml = dataHtml + "<td>"+(i+1)+"</td>";
+                dataHtml = dataHtml + "<td>게시물 등록</td>";
+                dataHtml = dataHtml + "<td>2022-01-20</td>";
+                dataHtml = dataHtml + "<td>1</td>";
+                dataHtml = dataHtml + "</tr>";
+            }
+
+            document.getElementById("dataIn").innerHTML = dataHtml;
+
+        }
+    </script>
+
+
+</head>
+<body>
+    <form action="" method="post">
+
+
+    </form>
+    <button onclick="dataOpen()">데이터 가져오기</button>
+    <br><br>
+    <table>
+        <colgroup>
+            <col width="50px">
+            <col width="200px">
+            <col width="100px">
+            <col width="100px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>날짜</th>
+                <th>조회수</th>
+            </tr>
+        </thead>
+        <tbody id="dataIn">
+           
+        </tbody>
+        <!-- <tr>
+            <td>1</td>
+            <td>게시물 등록</td>
+            <td>2022-01-20</td>
+            <td>1</td>
+        </tr> -->
+    </table>
+    
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,td{border:1px solid black; border-collapse: collapse;}
+    </style>
+</head>
+<body>
+    <form action="" method="get">
+        <label>숫자1</label>
+        <input type="text" name="num1" id="num1"><br>
+        <label>숫자2</label>
+        <input type="text" name="num2" id="num2"><br>
+        <button type="button" onclick="cal()"> 계산확인</button>
+    </form>
+    <table>
+        <tr>
+            <td>합계</td>
+            <td id="tdTotal"></td>
+        </tr>
+    </table>
+    <script>
+        function cal(){
+            //alert("cal이 호출되었습니다.");
+            var num1 = Number(document.getElementById("num1").value); //1
+            var num2 = Number(document.getElementById("num2").value); //10
+            //alert(typeof(num1));
+           
+            var first = (num1>=num2)?num1:num2; 
+            //var first = Math.max(num1,num2);
+            var second = (num2>=num1)?num1:num2;
+            // var second = Math.min(num1,num2);
+            //while(5<=10)
+            var total=0; //while지역변수
+            while(second<=first){
+                total = total + second;
+                second+=1;
+            }
+            document.getElementById("tdTotal").innerText=total;
+
+        }
+
+        //input box 숫자 2개를 입력받아
+        // 그 사이의 숫자를 모두 더한 값을 출력하시오.
+        
+        
+
+        // var num=1;
+        // var total=0;
+        // while(num<=10){
+        //     if(num%3==0){ 
+        //         total += num;
+        //     }
+        //     num+=1;
+        // }
+        // document.write(total);
+
+    </script>
+    
+</body>
+</html>

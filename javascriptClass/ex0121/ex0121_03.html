@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(function(){
+            //1번째 클릭을 하면 c01 black->red
+            //2번째 클릭을 하면 c02 black->blue
+
+            var i=0;
+            var bool=true;
+            var bool2=true;
+            $("button").click(function(){
+                if(i%2==0){
+                    if(bool) {
+                       $(".c01").css("color","red");
+                       bool=false;
+                    }else{
+                        $(".c01").css("color","black");
+                       bool=true;
+                    }      
+                }else{
+                    if(bool2) {
+                       $(".c02").css("color","blue");
+                       bool2=false;
+                    }else{
+                        $(".c02").css("color","black");
+                       bool2=true;
+                    }  
+                }
+                $("#txt1").text(i+"번째 클릭");
+                i++;
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <ul>
+        <li class="c01">네이버</li>
+        <li class="c02">다음</li>
+        <li class="c01">네이트</li>
+        <li class="c02">구글</li>
+        <li class="c01">지마켓</li>
+        <li class="c02">배달의 민족</li>
+    </ul>
+    <p id="txt1"></p>
+    <button>버튼</button>
+    
+</body>
+</html>

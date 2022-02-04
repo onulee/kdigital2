@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- input 5개 입력받아 큰수부터 차례로 정렬하시오. -->
+    <form action="#" method="get">
+        <label>1차</label>
+        <input type="text" name="num1" id="num1"><br>
+        <label>2차</label>
+        <input type="text" name="num2" id="num2"><br>
+        <label>3차</label>
+        <input type="text" name="num3" id="num3"><br>
+        <label>4차</label>
+        <input type="text" name="num4" id="num4"><br>
+        <label>5차</label>
+        <input type="text" name="num5" id="num5"><br>
+        <button type="button" onclick="numSort()">정렬</button>
+    </form>
+    <h2 id="result"></h2>
+    <h2 id="result2"></h2>
+
+    <script>
+        function numSort(){
+            var input =[];
+            for(var i=0;i<5;i++){
+                input[i] = Number(document.getElementById("num"+(i+1)).value);
+            }
+            //숫자정렬 :오름차순
+            input.sort(function(a,b){
+                //return a-b; //오름차순
+                return b-a;   //내림차순
+            });
+            document.getElementById("result").innerText = input;
+            input.sort(function(a,b){
+                return a-b; //오름차순
+                //return b-a;   //내림차순
+            });
+            document.getElementById("result2").innerText = input;
+
+        }
+
+    </script>
+    
+</body>
+</html>

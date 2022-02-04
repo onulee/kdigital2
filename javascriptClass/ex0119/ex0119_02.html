@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--input : 2 -->
+    <script>
+        var input = prompt("원하는 단?"); //5
+        var input2 = prompt("원하는 단?"); //3
+
+        //구구단 2단 ~ 5단
+        var i=0,j=0;
+        for(i=input;i<=input2;i++){
+            for(j=1;j<=9;j++){
+                document.write(i," * ",j," = ",i*j,"<br>");
+            }
+        }
+    </script>
+    
+</body>
+</html>

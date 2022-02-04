@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(function(){
+            //ajax호출
+            $.ajax({
+                url:"schedule.json",
+                type:"get",
+                data:{ },
+                dataType:"json",
+                success:function(data) {
+                    alert("성공"+data.data[0].station_code);
+                    let data_html="";
+                    if(data.data.length==0){
+                        alert("데이터가 없습니다.");
+                    }
+                    for(var i in data.data){
+                        data_html +="<tr>";
+                        data_html +="<td>"+data.data[i].station_code+"</td>";
+                        data_html +="<td>"+data.data[i].station_line+"</td>";
+                        data_html +="<td>"+data.data[i].station_name+"</td>";
+                        data_html +="<td>"+data.data[i].week+"</td>";
+                        data_html +="<td>"+data.data[i].train_arrtime+"</td>";
+                        data_html +="<td>"+data.data[i].train_deptime+"</td>";
+                        data_html +="<td>"+data.data[i].train_departure+"</td>";
+                        data_html +="<td>"+data.data[i].train_destination+"</td>";
+                        data_html +="</tr>";
+                    }
+
+                    $("#content").html(data_html);
+
+                },
+                error:function(){
+                    alert("실패");
+                }
+
+
+            });
+        });
+
+    </script>
+    <style>
+        table,th,td{border:1px solid black; border-collapse: collapse;}
+        th,td{height:40px; text-align: center;
+        
+        }
+        th:nth-child(1){width:100px;}
+        th:nth-child(2){width:300px;}
+        th:nth-child(3){width:100px;}
+        th:nth-child(4){width:100px;}
+        th:nth-child(5){width:100px;}
+        th:nth-child(6){width:100px;}
+        th:nth-child(7){width:100px;}
+        th:nth-child(8){width:100px;}
+    </style>
+</head>
+<body>
+    <h2>열차시간표-서울역</h2>
+    <table>
+        <tr>
+            <th>코드</th>
+            <th>호선</th>
+            <th>역명</th>
+            <th>요일별</th>
+            <th>도착시간</th>
+            <th>출발시간</th>
+            <th>출발역</th>
+            <th>도착역</th>
+        </tr>
+        <tbody id="content">
+            
+        </tbody>
+    </table>
+    
+</body>
+</html>

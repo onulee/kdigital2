@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,td{border:1px solid black; border-collapse: collapse;
+           text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        //함수 생성
+        function cal(){
+            var strInput = document.getElementById("numInput").value;
+            //문자를 숫자형태로 잘라서 배열에 저장시켜줌.
+            var numArr = strInput.split(",").map(Number);
+            var numArr2 = strInput.split(",").map(Number);
+            // 최대값, 최소값, 순차정렬, 역순정렬
+            //최대값
+            var numMax = Math.max.apply(null,numArr);
+            //최소값
+            var numMin = Math.min.apply(null,numArr);
+            //순차정렬
+            var seqSort = numArr.sort(function(a,b){
+                return a-b;
+            });
+            //역순정렬
+            var revSort = numArr2.sort(function(a,b){
+                return b-a;
+            });
+
+            var inputHtml="";
+            inputHtml = inputHtml+"<tr><td>최대값</td><td>"+numMax+"</td></tr>";
+            inputHtml = inputHtml+"<tr>";
+            inputHtml = inputHtml+"<td>최소값</td>";
+            inputHtml = inputHtml+"<td>"+numMin+"</td>";
+            inputHtml = inputHtml+"</tr>";
+            inputHtml = inputHtml+"<tr><td>오름차순</td><td>"+ seqSort   +"</td></tr>";
+            inputHtml = inputHtml+"<tr><td>내림차순</td><td>"+ revSort +"</td></tr>";
+
+            document.getElementById("dataIn").innerHTML = inputHtml;
+
+        }
+
+    </script>
+
+    <form action="" method="post">
+        <input type="text" name="numInput" id="numInput">
+        <button type="button" onclick="cal()">계산확인</button>
+    </form>
+    <br><br>
+
+<table>
+    <colgroup>
+        <col width="100px">
+        <col width="100px">
+    </colgroup>
+    
+    <!-- innerHtml 넣을것 -->
+    <tbody id="dataIn">
+        
+    </tbody>
+</table>
+    
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0;}
+        #main{ width:1200px; height:3000px; 
+        border:2px solid black; 
+    }
+    
+    #d01,#d02,#d03,#d04,#d05,#d06{ 
+        width:100px; height:100px;
+        position:relative;
+        }
+        #d01{ background:yellow;
+            z-index:10;
+        }
+        #d02{ background:blue; 
+              top:-30px; left:30px;
+              z-index:5;
+             }
+        #d03{ background:green;
+              }
+        #d04{ background:greenyellow;   }
+        #d05{ background:pink; 
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="d01"></div>
+        <div id="d02"></div>
+        <div id="d03"></div>
+        <div id="d04"></div>
+        <div id="d05"></div>
+    </div>
+    
+</body>
+</html>

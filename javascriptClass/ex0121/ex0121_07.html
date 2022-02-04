@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        
+        // 1.제목,예약장소 모두 내용 체크 
+        //  alert("모두 입력하셔야 합니다."); focus가 없는 곳에 이동되도록 해보세요.
+        // 2. 모든 내용이 들어가 있으면 최종예약확인에 표시
+       
+        $(function(){
+            $("#btn").click(function(){
+                if($("#title").val()=="" || $("#locat").val().length==0 ){
+                     alert("모두 입력하셔야 합니다.");
+                 }else{
+                    $("#title01").val()=$("#title").val();
+                    $("#locat01").val()=$("#locat").val();
+                 }
+            });
+
+            $("input").focusout(function(){
+                    $(this).next().text("내용들어갔습니다.");
+            });
+
+
+
+
+
+        });
+    </script>
+</head>
+<body>
+   
+    <form>
+        <h3>아래 사항은 모두 입력이 되어야 예약이 가능합니다.</h3>
+        <label>제목</label>
+        <input type="text" name="title" id="title"><span id="s01"></span><br>
+        <label>예약장소</label>
+        <input type="text" name="locat" id="locat"><span></span><br>
+    </form>
+    <button id="btn" >예약확인</button>
+    
+    <h2>최종예약확인</h2>
+    <table>
+        <tr>
+            <td>제목</td>
+            <td id="title01"></td>
+        </tr>
+        <tr>
+            <td>예약장소</td>
+            <td id="locat01"></td>
+        </tr>
+    </table>
+    
+</body>
+</html>

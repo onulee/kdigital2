@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>학생성적</title>
+    <script>
+        $(function(){
+            $("#btn").click(function(){
+                //alert("호출됨");
+                //$("#contxt tr td:nth-child(1)").text($("#name").val());
+
+                var htmldata="";
+                var stu_sum = Number($("#kor").val())+Number($("#eng").val())+Number($("#math").val());
+                //소수점 2자리    
+                // round(1234.5678, -2)   
+                var stu_avg = round(stu_sum/3.0,-2);
+                
+                htmldata = htmldata + "<tr>";
+                htmldata = htmldata + "<td>"+ $("#name").val() +"</td>";
+                htmldata = htmldata + "<td>"+ $("#kor").val() +"</td>";
+                htmldata = htmldata + "<td>"+ $("#eng").val() +"</td>";
+                htmldata = htmldata + "<td>"+ $("#math").val() +"</td>";
+                htmldata = htmldata + "<td>"+ stu_sum +"</td>";
+                htmldata = htmldata + "<td>"+ stu_avg +"</td>";
+                htmldata = htmldata + "</tr>";
+
+                $("#contxt").prepend(htmldata);  //append-뒤부분, html-모든 것 삭제후 다시 추가
+                $("#name").val("");
+                $("#kor").val("");
+                $("#eng").val("");
+                $("#math").val("");
+                $("#name").focus();
+
+            });
+        });
+    </script>
+    <style>
+        input{width:150px;height:25px; border:1px solid #888888;
+          margin-bottom:10px;
+        }
+        table,th,td{
+            border:1px solid #888888; border-collapse: collapse;
+        }
+        th,td{width:80px; height:40px; text-align:center; font-size: 15px;}
+    </style>
+</head>
+<body>
+    <h2>학생성적입력</h2>
+    <form action="#" method="post">
+        <label>이름</label>
+        <input type="text" name="name" id="name"><br>
+        <label>국어</label>
+        <input type="text" name="kor" id="kor"><br>
+        <label>영어</label>
+        <input type="text" name="eng" id="eng"><br>
+        <label>수학</label>
+        <input type="text" name="math" id="math">
+        <br>
+        <input type="button" id="btn" value="등록">
+    </form>
+    <br>
+    <h3>학생성적리스트</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>국어</th>
+                <th>영어</th>
+                <th>수학</th>
+                <th>합계</th>
+                <th>평균</th>
+            </tr>
+        </thead>
+        <tbody id="contxt">
+            
+        </tbody>
+    </table>
+    
+</body>
+</html>

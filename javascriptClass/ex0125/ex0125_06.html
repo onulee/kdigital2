@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var today = new Date();
+    // 1. js날짜 객체, 2. 파이썬 날짜 객체, 3. db 날짜 객체
+    var nowYear = today.getFullYear();
+    var nowMonth = today.getMonth();
+    var nowDate = today.getDate();
+    var nowDay = today.getDay();
+    document.write("2022년도 : "+nowYear,"<br>");
+    document.write("1월 : "+nowMonth,"<br>");
+    document.write("25일 : "+nowDate,"<br>");
+    document.write("화요일 : "+nowDay,"<br>");
+    
+    //switch 요일처리
+    let k_nowDay;
+    switch(nowDay){
+        case 0:
+        k_nowDay = "일요일";
+        break;
+        case 1:
+        k_nowDay = "월요일";
+        break;
+        case 2:
+        k_nowDay = "화요일";
+        break;
+        case 3:
+        k_nowDay = "수요일";
+        break;
+        case 4:
+        k_nowDay = "목요일";
+        break;
+        case 5:
+        k_nowDay = "금요일";
+        break;
+        case 6:
+        k_nowDay = "토요일";
+        break;
+    }
+
+    // 배열로 요일처리
+    var arrDay = ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'];
+    arrDay[nowDay];
+
+    document.write("해당 일 : "+nowYear+"년 "+(nowMonth+1)+"월 "+nowDate+" 일 ("+arrDay[nowDay]+")","<br>");
+</script>
+<body>
+    
+</body>
+</html>

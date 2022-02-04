@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1~100까지 합중에....
+        // 합이 100 넘어가는 최초시점은 무엇일까요?
+        // 1,2,3,4,5,6,...... 
+        // 1,3,6,10,15,21,28,36,45,55,.....
+        // 그때 i를 출력해 보세요.
+
+        // while(true){
+        //     //무한
+        // }
+        // for(;;){
+        //     //무한
+        // }
+
+
+
+        var total=0;
+        var i=1;
+        for(i=1;i<=100;i++){
+            total += i;
+            if(total>=100) break;
+        }
+
+        document.write("100을 넘는 수 : ",i,"<br>");
+        document.write("그때의 값 : ",total,"<br>");
+
+
+        // var data = [0,1,2,3,4];
+        // var i=0;
+        // for(i=0;i<=10;i++){
+        //     document.write(i,"<br>");
+        // }
+
+        // var j=0;
+        // for(j in data){  //향상된 for문
+        //     document.write(j,"<br>");
+        // }
+
+        document.write(i);
+
+
+    </script>
+    
+</body>
+</html>

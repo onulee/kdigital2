@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,td{border:1px solid black; border-collapse: collapse;}
+    </style>
+</head>
+<body>
+    <form action="#" method="get" name="frm">
+        <label>숫자를 맞춰보세요.(1~10까지 번호중)</label>
+        <input type="text" name="num" id="num"><br>
+        <button type="button" onclick="actionNum()">확인</button>
+    </form>
+    <table>
+        <tr>
+            <td>랜덤 숫자를 맞춰보세요.</td>
+            <td>랜덤 숫자는 ? </td>
+        </tr>
+        <tr>
+            <td>입력한 숫자의 힌트</td>
+            <td id="td_input"></td>
+        </tr>
+        <tr>
+            <td>최종 입력한 숫자</td>
+            <td id="user_input"></td>
+        </tr>
+    </table>
+    <script>
+        var randomNum=0;
+        var count=0;
+        var input_num=[,,,,];  //input_num[0],input_num[1]...,input_num[4]
+        randomNum = parseInt(Math.random()*100)+1;
+        //Math.ceil():올림 Math.round():반올림 Math.floor() : 내림
+        //1~100까지 랜덤 숫자를 하고 5번만 할수 있도록 구현.
+
+        function actionNum(){
+            if(count>=5){
+                alert("5번이상 도전하셨습니다. 이제 그만!");
+                return;
+            }
+            alert((count+1)+" 번째 도전입니다.!");
+            //alert("호출성공");
+            console.log("랜덤번호 : ",randomNum);
+            console.log("입력번호 : ",document.getElementById("num").value);
+            console.log("count : ",count);
+            // input_num[0] = 50;
+            // input_num[1] = 45; ...
+            input_num[count] = document.getElementById("num").value;
+            
+            if(randomNum>input_num[count]){
+                document.getElementById("td_input").innerText="입력한 숫자가 더 작습니다.";
+            }else if(randomNum<input_num[count]){
+                document.getElementById("td_input").innerText="입력한 숫자가 더 큽니다.";
+                
+            }else{
+                document.getElementById("td_input").innerText="정답 :"+randomNum;
+            }
+            if(count>=4){
+                var result="";
+                for(var i=0;i<5;i++){
+                    result +=input_num[i]+","; //  
+                } 
+                document.getElementById("td_input").innerText="정답 :"+randomNum;
+                document.getElementById("user_input").innerText=result;
+            }
+            count++;
+        }//function
+
+    </script>
+    
+</body>
+</html>
