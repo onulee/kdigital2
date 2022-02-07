@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,td{border:1px solid black; 
+            border-collapse:collapse;
+        text-align: center;}
+        table{width:550px; }
+        th{width:200px;}
+    </style>
+</head>
+<body>
+    <h2>학생상세페이지</h2>
+    <table>
+        {% if stu %}
+        <tr>
+            <th>학생이름</th>
+            <td>{{stu.s_name}}</td>
+        </tr>
+        <tr>
+            <th>학과</th>
+            <td>{{stu.s_major}}</td>
+        </tr>
+        <tr>
+            <th>나이</th>
+            <td>{{stu.s_age}}</td>
+        </tr>
+        <tr>
+            <th>학년</th>
+            <td>{{stu.s_grade}}</td>
+        </tr>
+        <tr>
+            <th>성별</th>
+            <td>{{stu.s_gender}}</td>
+        </tr>
+        {% endif %}
+    </table>
+    
+</body>
+</html>

@@ -10,16 +10,16 @@
     <h2>학생등록페이지</h2>
     <h3>views에서 넘어온 값 : {{user_id }}</h3>
     <h3>views에서 넘어온 값 : {{user_pw }}</h3>
-    <form action="" method="post">
-
+    <form action="{% url 'students:regCon' %}" method="post">
+        {% csrf_token %}
         <label>학생이름</label>
         <input type="text" name="name"><br>
         <label>학과</label>
         <input type="text" name="major"><br>
-        <label>학년</label>
-        <input type="text" name="grade"><br>
         <label>나이</label>
         <input type="text" name="age"><br>
+        <label>학년</label>
+        <input type="text" name="grade"><br>
         <label>성별</label>
         <input type="text" name="gender"><br>
         <input type="submit" value="저장">
