@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from students.models import Student
+import requests
 
 # 학생등록페이지 호출
 def regStudent(request):
