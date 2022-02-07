@@ -39,6 +39,10 @@
         </tr>
         {% endif %}
     </table>
+    <br>
+    <button><a href="{% url 'students:regmodify' stu.s_name  %}">수정</a></button>
+    <button>삭제</button>
+    <button><a href="{% url 'students:reglist' %}">학생목록</a></button>
     
 </body>
 </html>

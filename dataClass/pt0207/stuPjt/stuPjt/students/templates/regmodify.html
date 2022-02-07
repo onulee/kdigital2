@@ -7,20 +7,18 @@
     <title>Document</title>
     <script>
         function cancel(){
-            if(confirm("등록을 취소하시겠습니까?")){
+            if(confirm("수정을 취소하시겠습니까?")){
                 location.href="{% url 'students:reglist' %}";
             }
         }
     </script>
 </head>
 <body>
-    <h2>학생등록페이지</h2>
-    <h3>views에서 넘어온 값 : {{user_id }}</h3>
-    <h3>views에서 넘어온 값 : {{user_pw }}</h3>
-    <form action="{% url 'students:regCon' %}" method="post">
+    <h2>학생수정페이지</h2>
+    <form action="{% url 'students:regmodifyCon' %}" method="post">
         {% csrf_token %}
         <label>학생이름</label>
-        <input type="text" name="name"><br>
+        <input type="text" name="name" value={{stu.s_name}}><br>
         <label>학과</label>
         <input type="text" name="major"><br>
         <label>나이</label>
