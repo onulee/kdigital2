@@ -8,4 +8,6 @@ urlpatterns = [
     path('reglist/',views.reglist,name='reglist'),
     path('<str:name>/<str:major>/regview/',views.regview,name='regview'),
     path('<str:name>/regmodify/',views.regmodify,name='regmodify'),
+    path('regmodifyCon/',views.regmodifyCon,name='regmodifyCon'),
+    path('<str:name>/regdelete/',views.regdelete,name='regdelete'),
 ]

@@ -15,18 +15,18 @@
 </head>
 <body>
     <h2>학생수정페이지</h2>
-    <form action="{% url 'students:regmodifyCon' %}" method="post">
+    <form action="{% url 'students:regmodifyCon'  %}" method="post">
         {% csrf_token %}
-        <label>학생이름</label>
-        <input type="text" name="name" value={{stu.s_name}}><br>
+        <label>학생이름 : {{stu.s_name}}</label><br>
+        <input type="hidden" name="name" value={{stu.s_name}}><br>
         <label>학과</label>
-        <input type="text" name="major"><br>
+        <input type="text" name="major" value={{stu.s_major}}><br>
         <label>나이</label>
-        <input type="text" name="age"><br>
+        <input type="text" name="age" value={{stu.s_age}}><br>
         <label>학년</label>
-        <input type="text" name="grade"><br>
+        <input type="text" name="grade" value={{stu.s_grade}}><br>
         <label>성별</label>
-        <input type="text" name="gender"><br>
+        <input type="text" name="gender" value={{stu.s_gender}}><br>
         <input type="submit" value="저장">
         <input type="button" onclick='cancel()' value="취소">
     </form>
