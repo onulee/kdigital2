@@ -25,7 +25,8 @@
             {% for stu  in stuList  %}
                 <tr>
                     <td>
-                        <a href="/students/regview?name={{stu.s_name}}">{{stu.s_name}}</a>
+                        <a href="{% url 'students:regview' stu.s_name stu.s_major %}">{{stu.s_name}}</a>
+                        {% comment %}<a href="/students/regview?name={{stu.s_name}}">{{stu.s_name}}</a> {% endcomment %}
                     </td>
                     <td>{{stu.s_major}}</td>
                 </tr>

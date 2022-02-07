@@ -32,9 +32,10 @@ def reglist(request):
     return render(request,'reglist.html',context)
 
 # 학생상세페이지
-def regview(request):
-    name = request.GET.get('name')
+def regview(request,name,major):
+    #name = request.GET.get('name')
     print("views request : ",name)
+    print("views request : ",major)
     qs = Student.objects.get(s_name=name)
     context ={'stu':qs}
     return render(request,'regview.html',context)
