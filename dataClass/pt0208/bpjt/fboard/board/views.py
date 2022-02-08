@@ -49,3 +49,9 @@ def bmodifyOk(request):
     qs.save()
     
     return HttpResponseRedirect(reverse('board:blist'))
+
+# 게시판 삭제
+def bdelete(request,b_no):
+    qs = Freeboard.objects.get(b_no=b_no)
+    qs.delete()
+    return HttpResponseRedirect(reverse('board:blist'))

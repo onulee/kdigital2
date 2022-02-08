@@ -9,6 +9,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <link rel="stylesheet" href="{% static 'css/read.css' %}">
+  <script>
+    function deleteBtn(){
+      if(confirm('게시글을 삭제하시겠습니까?')){
+          location.href="{% url 'board:bdelete' board.b_no %}"
+      }
+    }
+  </script>
 </head>
 <body>
 <section>
@@ -44,7 +51,7 @@
     {% endif %}
 
     <a href="{% url 'board:blist' %}"><div class="list">목록</div></a>
-    <a href=""><div class="list">삭제</div></a>
+    <a onclick="deleteBtn()"><div class="list">삭제</div></a>
     <a href="{% url 'board:bmodify' board.b_no %}"><div class="list">수정</div></a>
     <a href=""><div class="list">답변달기</div></a>
   </section>
