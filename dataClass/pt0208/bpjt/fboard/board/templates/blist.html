@@ -51,20 +51,26 @@
       </tr>
       <!-- 내용부분 -->
       <tbody id="tbody">
-        <tr>
-          <td><span class='table-notice'>1</span></td>
-          <td class='table-title' id='pInput'>
-            <a href='#'>컨텐츠 뷰페이지로 연결(게시글제목)</a>
-          </td>
-          <td>2021-01-27</td>
-          <td>홍길동</td>
-          <td>1</td>
-        </tr>
-               
+        {% if blist %}
+          {% for board in blist %}
+          <tr>
+            <td><span class='table-notice'>{{board.b_no}}</span></td>
+            <td class='table-title' id='pInput'>
+              <a href="{% url 'board:bview' board.b_no  %}">{{board.b_title}}</a>
+            </td>
+            <td>{{board.b_date|date:'Y-m-d H:i'}}</td>
+            <td>{{board.b_id}}</td>
+            <td>{{board.b_hit}}</td>
+          </tr>
+          {% endfor %}
+        {% else %}
+          <tr>
+            <td colspans='5'>데이터 없음</td>
+          </tr>
+        {% endif %}
       </tbody>
-      
     </table>
-
+    <!-- 하단 넘버링 -->
     <ul class="page-num">
       <li class="first"></li>
       <li class="prev"></li>
@@ -73,7 +79,7 @@
       <li class="last"></li>
     </ul>
 
-    <a href="write_view.jsp"><div class="write">쓰기</div></a>
+    <a href="{% url 'board:bwrite' %}"><div class="write">쓰기</div></a>
   </section>
 
 </body>
