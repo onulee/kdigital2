@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from member.models import Member
 
 # 로그인 페이지
@@ -9,7 +9,11 @@ def login(request):
 def loginOk(request):
     id = request.POST.get("id")
     pw = request.POST.get("pw")
-    member = Member.objects.get(m_id=id,m_pw=pw)
+    # id, pw가 일치하지 않을때 예외 처리
+    try:
+        member = Member.objects.get(m_id=id,m_pw=pw)
+    except Member.DoesNotExist:
+        member = None
     # member에 해당 id가 있으면
     if member:
         id = member.m_id
