@@ -1,5 +1,4 @@
-
-from datetime import timezone
+import datetime
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -47,6 +46,7 @@ def bmodifyOk(request):
     qs = Freeboard.objects.get(b_no=b_no)
     qs.b_title = title
     qs.b_content = content
+    qs.b_date = datetime.datetime.now()   #2개 1개 최초등록, 수정업데이트
     # qs.b_date = timezone.now()    #2개 1개 최초등록, 수정업데이트
     qs.save()
     
