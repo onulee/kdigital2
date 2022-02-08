@@ -28,6 +28,8 @@ def bwriteOk(request):
 # 게시판 뷰페이지
 def bview(request,b_no):
     qs = Freeboard.objects.get(b_no=b_no)
+    qs.b_hit = qs.b_hit+1
+    qs.save()
     context={'board':qs}
     return render(request,'content_view.html',context)
 
