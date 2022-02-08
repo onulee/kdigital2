@@ -20,7 +20,8 @@ def loginOk(request):
         name = member.m_name
         request.session['session_id']=id  # {'session_id':'aaa'}
         request.session['session_name']=name  # {'session_name':'name'}
-        return redirect('/') 
+        context ={'msg':'로그인 성공!!'}
+        return render(request,'index.html',context)
     else:
         context ={'msg':'아이디와 패스워드가 일치하지 않습니다.'}
         return render(request,'login.html',context)
