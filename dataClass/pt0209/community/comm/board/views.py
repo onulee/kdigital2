@@ -1,25 +1,34 @@
 from django.shortcuts import redirect, render
 from board.models import Fboard
+from django.db.models import Q
 
 # 게시판리스트
 def blist(request):
+    
     if request.method == 'GET':
         qs = Fboard.objects.all().order_by('-b_no')
         context={'blist':qs}
-        return render(request,'blist.html',context) 
     else:
         category = request.POST.get('category')
         searchword = request.POST.get('searchword')
         # title검색
-        if searchword == 'title':
+        if category == 'title':
             qs = Fboard.objects.filter(b_title__contains=searchword)
-            context={'blist':qs}
-            return render(request,'blist.html',context) 
+            context = {'blist':qs,'category':category,'searchword':searchword}            
             
-        elif searchword == 'content':    
+        elif category == 'content':    
             qs = Fboard.objects.filter(b_content__contains=searchword)
-            context={'blist':qs}
-            return render(request,'blist.html',context) 
+            context = {'blist':qs,'category':category,'searchword':searchword}   
+        
+        elif category == 'all':
+            # a and b
+            # qs = Fboard.objects.filter(b_title__contains=searchword,b_content__contains=searchword)
+            # a or b
+            qs = Fboard.objects.filter(Q(b_title__contains=searchword) | Q(b_content__contains=searchword))
+            context = {'blist':qs,'category':category,'searchword':searchword}   
+        
+    print("views qs : ",qs)
+    return render(request,'blist.html',context)    
 
     
 

@@ -24,18 +24,31 @@
 </head>
 <body>
 <section>
-    <h1>NOTICE</h1>
+    <a href="{% url 'index' %}"><h1>NOTICE</h1></a>
     <div class="wrapper">
       <form action="{% url 'board:blist' %}" id="search" method="post">
         {% csrf_token %}
+        {% if category %}
         <select name="category" id="category">
-          <option value="all">전체</option>
-          <option value="title">제목</option>
-          <option value="content">내용</option>
+          <option value="all" {% if category in 'all'%}selected{% endif %} >전체</option>
+          <option value="title" {% if category in 'title'%}selected{% endif %}>제목</option>
+          <option value="content" {% if category in 'content'%}selected{% endif %}>내용</option>
         </select>
+        {% else %}
+          <select name="category" id="category">
+            <option value="all">전체</option>
+            <option value="title">제목</option>
+            <option value="content">내용</option>
+          </select>
+        {% endif %}  
+        
 
         <div class="title">
-          <input type="text" id="searchword" name="searchword" size="16">
+          {% if searchword %}
+            <input type="text" id="searchword" name="searchword" size="16" value="{{searchword}}">
+          {% else %}
+            <input type="text" id="searchword" name="searchword" size="16">
+          {% endif %}
         </div>
         <button type="button" onclick="searchBtn()"><i class="fas fa-search"></i></button>
       </form>
