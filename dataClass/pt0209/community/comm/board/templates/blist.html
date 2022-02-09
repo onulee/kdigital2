@@ -11,25 +11,33 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <link rel="stylesheet" href="{% static 'css/notice_list.css' %}">
   <script>
-
+       function searchBtn(){
+         
+         if($("#searchword").val().length<=1){
+           alert("검색어를 입력하셔야 검색이 가능합니다.")
+           return false;
+         }else{
+            $("#search").submit()
+         }
+       }
   </script>
 </head>
 <body>
 <section>
     <h1>NOTICE</h1>
     <div class="wrapper">
-      <form action="/search" name="search" method="post">
+      <form action="{% url 'board:blist' %}" id="search" method="post">
+        {% csrf_token %}
         <select name="category" id="category">
-          <option value="0">전체</option>
+          <option value="all">전체</option>
           <option value="title">제목</option>
           <option value="content">내용</option>
         </select>
 
         <div class="title">
-          <input type="text" size="16">
+          <input type="text" id="searchword" name="searchword" size="16">
         </div>
-  
-        <button type="submit"><i class="fas fa-search"></i></button>
+        <button type="button" onclick="searchBtn()"><i class="fas fa-search"></i></button>
       </form>
     </div>
 
