@@ -7,6 +7,10 @@ body {
   font-size: 16px;
 }
 
+/* 하단넘버링 색상 */
+.on { color:white; background:#202020;}
+.off { background:none;}
+
 /* Header Section */
 header {
   height: 35px;

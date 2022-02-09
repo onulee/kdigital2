@@ -96,25 +96,32 @@
     <ul class="page-num">
       <!-- 이전페이지 정리 -->
       {% if blist.has_previous %}
-        <a href="?page=1"><li class="first"></li></a>
-        <a href="?page={{blist.previous_page_number }}"><li class="prev"></li></a>
+        <a href="?nowpage=1"><li class="first"></li></a>
+        <a href="?nowpage={{blist.previous_page_number }}"><li class="prev"></li></a>
       {% else %}
         <li class="first"></li>
         <li class="prev"></li>
       {% endif %}
+
+
+
       <!-- 순차적 넘버링 -->
-      {% for nowpage in blist.paginator.page_range  %}
-        {% if  %}
-          <a href=""><li class="num"><div>{{nowpage}}</div></li></a>
+      {% for page in blist.paginator.page_range  %}
+        {% if page != nowpage  %}
+          <a href="?nowpage={{page}}"><li class="num off"><div>{{page}}</div></li></a>
         {% else %}
-          <li class="num"><div>{{nowpage}}</div></li>
+          <li class="num on"><div>{{page}}</div></li>
         {% endif %}
       {% endfor %}
 
+
+
+
+
       <!-- 이후 페이지 정리 -->
       {% if blist.has_next %}
-        <a href="?page={{ blist.next_page_number }}"><li class="next"></li></a>
-        <a href="?page={{blist.paginator.num_pages }}"><li class="last"></li></a>
+        <a href="?nowpage={{ blist.next_page_number }}"><li class="next"></li></a>
+        <a href="?nowpage={{blist.paginator.num_pages }}"><li class="last"></li></a>
       {% else %}
         <li class="next"></li>
         <li class="last"></li>

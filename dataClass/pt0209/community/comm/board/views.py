@@ -5,14 +5,15 @@ from django.core.paginator import Paginator
 
 # 게시판리스트
 def blist(request):
-    nowpage = int(request.GET.get('nowpage',1))  # 현재페이지 받음, 없을때 1 고정
+    # 현재페이지 받음, 없을때 1 고정
+    nowpage = int(request.GET.get('nowpage',1))  
     
     if request.method == 'GET':
         qs = Fboard.objects.all().order_by('-b_no')
         # 모든게시글을 받아서 페이지 분기
         paginator = Paginator(qs,10)           # 30개 1-10,2-10,3-10
-        blist = paginator.get_page(page)
-        context={'blist':blist}
+        blist = paginator.get_page(nowpage)
+        context={'blist':blist,'nowpage':nowpage}
         return render(request,'blist.html',context) 
     else:
         category = request.POST.get('category')
@@ -22,18 +23,16 @@ def blist(request):
             qs = Fboard.objects.filter(b_title__contains=searchword)
             # 모든게시글을 받아서 페이지 분기
             paginator = Paginator(qs,10)           # 30개 1-10,2-10,3-10
-            page = int(request.GET.get('page',1))  # 현재페이지 받음, 없을때 1 고정
-            blist = paginator.get_page(page)
-            context={'blist':blist,'category':category,'searchword':searchword}
+            blist = paginator.get_page(nowpage)
+            context={'blist':blist,'nowpage':nowpage,'category':category,'searchword':searchword}
             return render(request,'blist.html',context)
             
         elif category == 'content':    
             qs = Fboard.objects.filter(b_content__contains=searchword)
             # 모든게시글을 받아서 페이지 분기
             paginator = Paginator(qs,10)           # 30개 1-10,2-10,3-10
-            page = int(request.GET.get('page',1))  # 현재페이지 받음, 없을때 1 고정
-            blist = paginator.get_page(page)
-            context={'blist':blist,'category':category,'searchword':searchword}
+            blist = paginator.get_page(nowpage)
+            context={'blist':blist,'nowpage':nowpage,'category':category,'searchword':searchword}
             return render(request,'blist.html',context)
         
         elif category == 'all':
@@ -43,9 +42,8 @@ def blist(request):
             qs = Fboard.objects.filter(Q(b_title__contains=searchword) | Q(b_content__contains=searchword))
             # 모든게시글을 받아서 페이지 분기
             paginator = Paginator(qs,10)           # 30개 1-10,2-10,3-10
-            page = int(request.GET.get('page',1))  # 현재페이지 받음, 없을때 1 고정
-            blist = paginator.get_page(page)       # paginator
-            context={'blist':blist,'category':category,'searchword':searchword}
+            blist = paginator.get_page(nowpage)       # paginator
+            context={'blist':blist,'nowpage':nowpage,'category':category,'searchword':searchword}
             return render(request,'blist.html',context)
         
 
