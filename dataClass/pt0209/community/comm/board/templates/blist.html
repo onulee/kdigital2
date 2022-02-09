@@ -11,6 +11,12 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <link rel="stylesheet" href="{% static 'css/notice_list.css' %}">
   <script>
+
+      if('{{request.session.session_id}}'=='' || '{{request.session.session_id}}'==null){
+          alert('로그인을 하셔야 접속이 가능합니다.')
+          location.href="{% url 'index' %}"
+      }
+
        function searchBtn(){
          
          if($("#searchword").val().length<=1){

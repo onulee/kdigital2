@@ -108,7 +108,7 @@
     <div id="container">
         <div id="content">
             <div style="margin-bottom: 7px"></div>
-            <form action="{% url 'member:login' %}">
+            <form action="{% url 'member:login' %}" method="post">
                 {% csrf_token %}
                 <fieldset style="border: 0">
                     <div class="id_area">
