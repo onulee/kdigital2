@@ -93,18 +93,7 @@
         }
     </style>
     <script>
-        $(function(){
-            //$("#uId").val(opener.document.getElementById("pInput").innerText);
-            $("#uId").val($("#pInput",opener.document).text());
         
-            $("#loginBtn").click(function(){
-                alert($("#uId").val());
-                $("#pInput",opener.document).text($("#uId").val());
-                window.close();
-            });
-        
-        
-        });
     </script>
 
 
@@ -119,23 +108,24 @@
     <div id="container">
         <div id="content">
             <div style="margin-bottom: 7px"></div>
-            <form action="naver_index2.jsp">
+            <form action="{% url 'member:login' %}">
+                {% csrf_token %}
                 <fieldset style="border: 0">
                     <div class="id_area">
                         <div class="input_row" id="id_area">
                             <span class="input_box">
-                                <input type="text" name="" id="uId" class="int" placeholder="아이디">
+                                <input type="text" name="id" id="id" class="int" placeholder="아이디">
                             </span>
                         </div>
                     </div>
                     <div class="pw_area">
                         <div class="input_row" id="pw_area">
                             <span class="input_box">
-                                <input type="text" name="" id="uPw" class="int" placeholder="비밀번호">
+                                <input type="text" name="pw" id="pw" class="int" placeholder="비밀번호">
                             </span>
                         </div>
                     </div>
-                    <input class="btn_login" type="button" id="loginBtn" value="로그인">
+                    <input class="btn_login" type="submit" id="loginBtn" value="로그인">
                 </fieldset>
             </form>
         </div>
