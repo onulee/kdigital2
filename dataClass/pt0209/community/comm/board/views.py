@@ -5,13 +5,12 @@ from django.core.paginator import Paginator
 
 # 게시판리스트
 def blist(request):
-    nowpage = request.GET.get('nowpage',1)
+    nowpage = int(request.GET.get('nowpage',1))  # 현재페이지 받음, 없을때 1 고정
     
     if request.method == 'GET':
         qs = Fboard.objects.all().order_by('-b_no')
         # 모든게시글을 받아서 페이지 분기
         paginator = Paginator(qs,10)           # 30개 1-10,2-10,3-10
-        page = int(request.GET.get('page',1))  # 현재페이지 받음, 없을때 1 고정
         blist = paginator.get_page(page)
         context={'blist':blist}
         return render(request,'blist.html',context) 
