@@ -9,9 +9,11 @@ def blist(request):
     nowpage = int(request.GET.get('nowpage',1))  
     
     if request.method == 'GET':
+        # 모든 게시판 내용이 담겨있음.
         qs = Fboard.objects.all().order_by('-b_no')
-        # 모든게시글을 받아서 페이지 분기
+        # 모든게시글을 받아서 페이지 분기 - 
         paginator = Paginator(qs,10)           # 30개 1-10,2-10,3-10
+        # 1,2,3 10개 blist에 담음
         blist = paginator.get_page(nowpage)
         context={'blist':blist,'nowpage':nowpage}
         return render(request,'blist.html',context) 
