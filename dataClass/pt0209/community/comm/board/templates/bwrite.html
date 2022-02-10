@@ -20,7 +20,7 @@
     <h1>관리자 글쓰기</h1>
     <hr>
 
-    <form action="{% url 'board:bwriteOk' %}" name="write" method="post">
+    <form action="{% url 'board:bwriteOk' %}" name="write" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <table>
         <colgroup>
@@ -48,7 +48,7 @@
         <tr>
           <th>이미지 표시</th>
           <td>
-            <input type="file" name="file" id="file">
+            <input type="file" name="img" id="file">
           </td>
         </tr>
       </table>

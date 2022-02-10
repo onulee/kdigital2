@@ -9,9 +9,8 @@ class Fboard(models.Model):
     b_content = models.TextField()
     b_date = models.DateTimeField(default=datetime.now(),blank=True)
     member = models.ForeignKey(Member,on_delete=models.DO_NOTHING,null=True)
-    # b_id = models.CharField(max_length=100)
     b_hit = models.IntegerField(default=1)
-    # b_img = models.ImageField(blank=True)
+    b_img = models.ImageField(blank=True)
     
     def __str__(self):
         return self.b_title
