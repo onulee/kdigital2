@@ -1,24 +1,25 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>글수정</title>
+  <title>답글달기</title>
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/write.css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/write.css' %}">
 </head>
 <body>
 <section>
-    <h1>게시글수정</h1>
+    <h1>답글달기</h1>
     <hr>
-
-    <form action="reply.do" name="reply" method="post">
+    <form action="{% url 'board:breplyOk' %}" name="reply" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
       <table>
-      <input type="hidden" name="bId" value="test">
-      <input type="hidden" name="bGroup" value="test">
-      <input type="hidden" name="bStep" value="test">
-      <input type="hidden" name="bIndent" value="test">
+      <input type="hidden" name="b_no" value="{{board.b_no}}">
+      <input type="hidden" name="b_group" value="{{board.b_group}}">
+      <input type="hidden" name="b_step" value="{{board.b_step}}">
+      <input type="hidden" name="b_indent" value="{{board.b_indent}}">
         <colgroup>
           <col width="15%">
           <col width="85%">
@@ -26,30 +27,30 @@
         <tr>
           <th>작성자</th>
           <td>
-            <input type="text" name="bName">
+            <input type="text" name="id" value="{{request.session.session_id}}""   readonly>
           </td>
         </tr>
         <tr>
           <th>제목</th>
           <td>
-            <input type="text" name="bTitle" value="<답변> test">
+            <input type="text" name="title" value="<답변>{{board.b_title}} ">
           </td>
         </tr>
         <tr>
           <th>내용</th>
           <td>
-<textarea name="bContent" cols="50" rows="10">
+<textarea name="content" cols="50" rows="10">
 
 ---------------------------
 [답글]
-test
+{{board.b_content}}
 </textarea>
           </td>
         </tr>
         <tr>
           <th>이미지 표시</th>
           <td>
-            <input type="file" name="file" id="file">
+            <input type="file" name="img" id="file">
           </td>
         </tr>
       </table>

@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
 		<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,500,700,900&display=swap" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="css/style_main.css">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/css2/style_main.css' %}">
 	</head>
 	<body>
 	 	<header>
@@ -59,7 +60,7 @@
 		 				<span><a href="#">로그인</a>하시면 고객님의 구매내역과<br> 맛취향에 따라 딱맞는 맛있는 메뉴를 추천드려요</span>
 		 			</div>
 		 			<div></div>
-		 			<img alt="우거지탕" src="images/recomand_tang.png">
+		 			<img alt="우거지탕" src="static/images/recomand_tang.png">
 		 			<div>
 		 				<a href="#">얼큰소고기우거지탕</a>
 		 				<div>
@@ -75,7 +76,7 @@
 	 			<ul>
 	 				<li>
 	 					<a href="#">
-		 					<img alt="참스테이크" src="images/best01.jpg">
+		 					<img alt="참스테이크" src="/static/images/best01.jpg">
 		 					<span id="best_top">BEST<br>01</span>
 	 					</a>
 	 					<a href="#">
@@ -89,7 +90,7 @@
 	 				  </li>
 	 				<li>
 	 					<a href="#">
-		 					<img alt="감바스 알아히오" src="images/best02.jpg">
+		 					<img alt="감바스 알아히오" src="/static/images/best02.jpg">
 		 					<span>02</span>
 	 					</a>
 	 					<a href="#">

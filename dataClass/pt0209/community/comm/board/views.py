@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from board.models import Fboard
-from django.db.models import Q
+from django.db.models import Q, F
 from django.core.paginator import Paginator
 from member.models import Member
 from django.db.models import Max,Min,Avg 
@@ -12,18 +12,13 @@ def blist(request):
     
     if request.method == 'GET':
         
-        # aggregate - Max, Min, Avg
-        hit = Fboard.objects.aggregate(max_b_hit=Max('b_hit'))
-        max_hit = hit['max_b_hit'] #최대hit수가 얼마인지?
-        max_1 = max_hit+1          #최대hit+1
-        
         # 모든 게시판 내용이 담겨있음.
-        qs = Fboard.objects.all().order_by('-b_no')
+        qs = Fboard.objects.all().order_by('-b_group','b_step')
         # 모든게시글을 받아서 페이지 분기 - 
         paginator = Paginator(qs,10)           # 30개 1-10,2-10,3-10
         # 1,2,3 10개 blist에 담음
         blist = paginator.get_page(nowpage)
-        context={'blist':blist,'nowpage':nowpage,"max_hit":max_hit,"max_1":max_1}
+        context={'blist':blist,'nowpage':nowpage}
         return render(request,'blist.html',context) 
     else:
         category = request.POST.get('category')
@@ -102,7 +97,14 @@ def bwriteOk(request):
     content = request.POST.get('content')
     img = request.FILES.get('img','')
     print("views file : ",request.FILES)
-    qs = Fboard(member=member,b_title=title,b_content=content,b_img=img)
+    
+    # b_no 수동으로 1씩증가해서 저장시켜줌.
+    no = Fboard.objects.aggregate(max_b_no=Max('b_no'))
+    max_no = no['max_b_no']   # b_no 최대 번호를 찾음 1.2.5. ... 26
+    max_no += 1          #최고 높은 숫자를 만들어줌. 27 = no+1
+    b_no = max_no
+    
+    qs = Fboard(b_no=b_no,member=member,b_title=title,b_content=content,b_group=b_no,b_img=img)
     qs.save()
     # Fboard.objects.create(b_id=id,b_title=title,b_content=content)
     return redirect('board:blist')
@@ -112,3 +114,41 @@ def bdelete(request,b_no):
     qs = Fboard.objects.get(b_no=b_no)
     qs.delete()
     return redirect('board:blist')
+
+# 답글쓰기
+def breply(request,b_no):
+    qs = Fboard.objects.get(b_no=b_no)
+    context = {"board":qs}
+    return render(request,'breply.html',context)
+
+
+# 답글쓰기 저장
+def breplyOk(request):
+    # b_no 수동으로 1씩증가해서 저장시켜줌.
+    no = Fboard.objects.aggregate(max_b_no=Max('b_no'))
+    max_no = no['max_b_no']   # b_no 최대 번호를 찾음 1.2.5. ... 26
+    max_no += 1          #최고 높은 숫자를 만들어줌. 27 = no+1
+    b_no = max_no
+    
+    # 부모의 정보
+    b_group = int(request.POST.get('b_group'))
+    b_step = int(request.POST.get('b_step'))
+    b_indent = int(request.POST.get('b_indent'))
+    
+    # 답글쓰기 내용
+    id = request.POST.get('id')
+    member = Member.objects.get(m_id=id)
+    title = request.POST.get('title')
+    content = request.POST.get('content')
+    img = request.FILES.get('img','')
+    
+    # 부모의 b_group속한 게시글 b_step을 +1
+    Fboard.objects.filter(b_group=b_group,b_step__gt=b_step).update(b_step=F('b_step')+1)
+    
+    # 부모의 bgroup,부모의 bstep+1, 부모의 b_indent+1
+    qs = Fboard(b_no=b_no,member=member,b_title=title,b_content=content,b_group=b_group,b_step=b_step+1,b_indent=b_indent+1,b_img=img)
+    qs.save()
+    # Fboard.objects.create(b_id=id,b_title=title,b_content=content)
+    return redirect('board:blist')
+    
+    
