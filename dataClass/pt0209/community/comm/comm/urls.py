@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('board/', include('board.urls')),
     path('member/', include('member.urls')),
+    path('blockhtml/', include('blockhtml.urls')),
 ] 
 
 #파일 업로드시 url구성

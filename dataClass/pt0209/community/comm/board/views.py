@@ -3,6 +3,7 @@ from board.models import Fboard
 from django.db.models import Q
 from django.core.paginator import Paginator
 from member.models import Member
+from django.db.models import Max,Min,Avg 
 
 # 게시판리스트
 def blist(request):
@@ -10,13 +11,19 @@ def blist(request):
     nowpage = int(request.GET.get('nowpage',1))  
     
     if request.method == 'GET':
+        
+        # aggregate - Max, Min, Avg
+        hit = Fboard.objects.aggregate(max_b_hit=Max('b_hit'))
+        max_hit = hit['max_b_hit'] #최대hit수가 얼마인지?
+        max_1 = max_hit+1          #최대hit+1
+        
         # 모든 게시판 내용이 담겨있음.
         qs = Fboard.objects.all().order_by('-b_no')
         # 모든게시글을 받아서 페이지 분기 - 
         paginator = Paginator(qs,10)           # 30개 1-10,2-10,3-10
         # 1,2,3 10개 blist에 담음
         blist = paginator.get_page(nowpage)
-        context={'blist':blist,'nowpage':nowpage}
+        context={'blist':blist,'nowpage':nowpage,"max_hit":max_hit,"max_1":max_1}
         return render(request,'blist.html',context) 
     else:
         category = request.POST.get('category')
@@ -69,9 +76,14 @@ def bmodifyOk(request):
     b_no = request.POST.get('b_no')
     b_title = request.POST.get('b_title')
     b_content = request.POST.get('b_content')
+    # 파일이름 가져오기 
+    b_img = request.FILES.get('b_img','')
+    print("views file : ",request.FILES)
     qs = Fboard.objects.get(b_no=b_no)
     qs.b_title = b_title
     qs.b_content = b_content
+    # 파일이름 저장
+    qs.b_img = b_img
     qs.save()
     # Fboard.objects.create(b_id=id,b_title=title,b_content=content)
     # context = {"board":qs}

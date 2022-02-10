@@ -19,7 +19,7 @@
     <h1>게시글수정</h1>
     <hr>
 
-    <form action="{% url 'board:bmodifyOk' %}" name="modify" method="post">
+    <form action="{% url 'board:bmodifyOk' %}" name="modify" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <table>
       <input type="hidden" name="b_no" value="{{board.b_no}}">
@@ -48,7 +48,7 @@
         <tr>
           <th>이미지 표시</th>
           <td>
-            <input type="file" name="file" id="file">
+            <input type="file" name="b_img" id="file">
           </td>
         </tr>
       </table>

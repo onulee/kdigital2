@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'board',
     'member',
+    'blockhtml',
 ]
 
 MIDDLEWARE = [

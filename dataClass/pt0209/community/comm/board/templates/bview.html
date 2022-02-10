@@ -43,13 +43,15 @@
         <td colspan="3" class="article">{{board.b_content}}</td>
       </tr>
       <tr>
-        <td colspan="3" class="article">파일이름</td>
+        <td colspan="3"><strong>파일이름</strong></td>
       </tr>
-      <tr>
-        <td colspan="3" class="article">
-          <img src="{{board.b_img.url}}">        
-        </td>
-      </tr>
+      {% if board.b_img  %}
+        <tr>
+          <td colspan="3" class="article">
+            <img src="{{board.b_img.url}}">        
+          </td>
+        </tr>
+      {% endif %}
       <tr>
         <td colspan="3"><strong>다음글</strong> <span class="separator">|</span> [키즈잼] 2월 프로그램 안내</td>
       </tr>
