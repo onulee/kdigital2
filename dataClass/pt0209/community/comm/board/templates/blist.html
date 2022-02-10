@@ -82,7 +82,13 @@
             <tr>
               <td><span class='table-notice'>{{board.b_no}}</span></td>
               <td class='table-title' id='pInput'>
-                <a href='{% url 'board:bview' board.b_no %}'>{{board.b_title}}</a>
+                <a href='{% url 'board:bview' board.b_no %}'>
+                  {% if board.b_indent > 0  %}
+                      ▶{{board.b_title}}
+                  {% else %}
+                    {{board.b_title}}
+                  {% endif %}
+                </a>
               </td> 
               <td>{{board.b_date|date:'Y-m-d H:i'}}</td>
               <td>{{board.member}}</td>
