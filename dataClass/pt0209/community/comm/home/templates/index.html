@@ -12,6 +12,8 @@
        <p>{{request.session.session_id}}님 환영합니다.</p>
        <ul>
            <li><a href="{% url 'board:blist' %}">게시판리스트</a></li>
+           <li><a href="{% url 'blockhtml:notice_list' %}">block게시판</a></li>
+           <li><a href="{% url 'blockhtml:notice_read' %}">block뷰</a></li>
            <li><a href="/admin">관리자페이지</a></li>
            <li><a href="{% url 'member:logout' %}">로그아웃</a></li>
            <li>회원정보리스트</li>
