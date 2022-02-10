@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from board.models import Fboard
 from django.db.models import Q
 from django.core.paginator import Paginator
+from member.models import Member
 
 # 게시판리스트
 def blist(request):
@@ -84,9 +85,10 @@ def bwrite(request):
 # 게시판글쓰기저장
 def bwriteOk(request):
     id = request.POST.get('id')
+    member = Member.objects.get(m_id=id)
     title = request.POST.get('title')
     content = request.POST.get('content')
-    qs = Fboard(b_id=id,b_title=title,b_content=content)
+    qs = Fboard(member=member,b_title=title,b_content=content)
     qs.save()
     # Fboard.objects.create(b_id=id,b_title=title,b_content=content)
     return redirect('board:blist')

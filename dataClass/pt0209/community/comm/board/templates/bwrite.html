@@ -8,6 +8,12 @@
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <link rel="stylesheet" href="{% static 'css/write.css' %}">
+  <script>
+    if('{{request.session.session_id}}'=='' || '{{request.session.session_id}}'==null){
+      alert('로그인을 하셔야 글쓰기가 가능합니다.')
+      location.href="{% url 'index' %}"
+    }
+  </script>
 </head>
 <body>
 <section>
@@ -24,7 +30,7 @@
         <tr>
           <th>작성자</th>
           <td>
-            <input type="text" name="id">
+            <input type="text" name="id" value={{request.session.session_id}}   readonly>
           </td>
         </tr>
         <tr>

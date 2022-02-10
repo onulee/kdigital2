@@ -86,7 +86,7 @@
                 <a href='{% url 'board:bview' board.b_no %}'>{{board.b_title}}</a>
               </td> 
               <td>{{board.b_date|date:'Y-m-d H:i'}}</td>
-              <td>{{board.b_id}}</td>
+              <td>{{board.member}}</td>
               <td>{{board.b_hit}}</td>
             </tr>
           {% endfor %}
