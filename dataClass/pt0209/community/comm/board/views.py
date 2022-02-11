@@ -4,6 +4,28 @@ from django.db.models import Q, F
 from django.core.paginator import Paginator
 from member.models import Member
 from django.db.models import Max,Min,Avg 
+import urllib # 한글인코딩
+import requests # 웹스크롤링
+import json
+
+
+#공공데이터
+def publicData(request):
+    m_serviceKey ='918RE13GA7OY7ZEmUzApgbOeAcQoZ%2FaHsXWcqPAKQ9YNNPj83KOstRMRIUrCFIAcm9qj2R6b7NFZjp%2FYsYzJLg%3D%3D'
+    url = 'http://api.visitkorea.or.kr/openapi/service/rest/PhotoGalleryService/galleryList?serviceKey={}&pageNo=1&numOfRows=10&MobileOS=ETC&MobileApp=AppTest&arrange=A&_type=json'.format(m_serviceKey)
+    response = requests.get(url)
+    print("views response : ",response)
+    # response의 내용을 text변환
+    contents = response.text
+    # text를 json 타입으로 변경
+    json_ob = json.loads(contents)
+    # json데이터 중 필요한 데이터 가져오기
+    publicData = json_ob['response']['body']['items']['item']
+    print(" views bodyData : ",publicData)
+    context={'publicData':publicData}
+    return render(request,'publicData.html',context)
+    
+
 
 # 게시판리스트
 def blist(request):

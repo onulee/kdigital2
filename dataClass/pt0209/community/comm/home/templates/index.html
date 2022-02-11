@@ -12,6 +12,7 @@
        <p>{{request.session.session_id}}님 환영합니다.</p>
        <ul>
            <li><a href="{% url 'board:blist' %}">게시판리스트</a></li>
+           <li><a href="{% url 'board:publicData' %}">공공데이터</a></li>
            <li><a href="{% url 'blockhtml:main' %}">block메인</a></li>
            <li><a href="{% url 'blockhtml:notice_list' %}">block게시판</a></li>
            <li><a href="{% url 'blockhtml:notice_read' %}">block뷰</a></li>

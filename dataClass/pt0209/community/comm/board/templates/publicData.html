@@ -12,20 +12,6 @@
   <link rel="stylesheet" href="{% static 'css/notice_list.css' %}">
   <script>
 
-      if('{{request.session.session_id}}'=='' || '{{request.session.session_id}}'==null){
-          alert('로그인을 하셔야 접속이 가능합니다.')
-          location.href="{% url 'index' %}"
-      }
-
-       function searchBtn(){
-         
-         if($("#searchword").val().length<=1){
-           alert("검색어를 입력하셔야 검색이 가능합니다.")
-           return false;
-         }else{
-            $("#search").submit()
-         }
-       }
   </script>
 </head>
 <body>
@@ -62,40 +48,31 @@
     <table>
       <colgroup>
         <col width="15%">
+        <col width="15%">
+        <col width="15%">
+        <col width="15%">
         <col width="40%">
-        <col width="15%">
-        <col width="15%">
-        <col width="15%">
       </colgroup>
       <!-- 제목부분 -->
       <tr>
-        <th>No.</th>
         <th>제목</th>
-        <th>작성일</th>
-        <th>작성자</th>
-        <th>조회수</th>
+        <th>촬영장소</th>
+        <th>촬영날짜</th>
+        <th>촬영자</th>
+        <th>이미지경로</th>
       </tr>
       <!-- 내용부분 -->
       <tbody id="tbody">
-        {% if blist %}
-          {% for board in blist %}
+        {% if publicData %}
+          {% for pdata in publicData %}
             <tr>
-              <td><span class='table-notice'>{{board.b_no}}</span></td>
+              <td><span class='table-notice'>{{pdata.galTitle}}</span></td>
               <td class='table-title' id='pInput'>
-                <a href='{% url 'board:bview' board.b_no %}'>
-                  {% if board.b_indent > 0  %}
-                  {% for i in "x"|rjust:board.b_indent %}
-                    ▶
-                  {% endfor %}
-                    {{board.b_title}}
-                  {% else %}
-                    {{board.b_title}}
-                  {% endif %}
-                </a>
+                {{pdata.galPhotographyLocation}}
               </td> 
-              <td>{{board.b_date|date:'Y-m-d H:i'}}</td>
-              <td>{{board.member}}</td>
-              <td>{{board.b_hit}}</td>
+              <td>{{pdata.galCreatedtime}}</td>
+              <td>{{pdata.galPhotographer}}</td>
+              <td>{{pdata.galWebImageUrl}}</td>
             </tr>
           {% endfor %}
         {% else %}

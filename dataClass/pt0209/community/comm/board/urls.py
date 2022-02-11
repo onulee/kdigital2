@@ -12,4 +12,6 @@ urlpatterns = [
     path('<str:b_no>/bdelete/', views.bdelete,name='bdelete'), # 삭제
     path('<str:b_no>/breply/', views.breply,name='breply'),    # 답글쓰기form
     path('breplyOk/', views.breplyOk,name='breplyOk'),         # 답글쓰기저장
+    # 공공데이터
+    path('publicData/', views.publicData,name='publicData'),   # 공공데이터
 ]

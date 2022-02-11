@@ -128,7 +128,7 @@ STATICFILES_DIRS = (
 
 # 파일업로드 할 위치
 # 사용자가 업로드한 파일 관리
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'  # 브라우저에서 url입력시 넘어온 값을 분석해서 media
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 
