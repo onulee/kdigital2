@@ -14,4 +14,5 @@ urlpatterns = [
     path('breplyOk/', views.breplyOk,name='breplyOk'),         # 답글쓰기저장
     # 공공데이터
     path('publicData/', views.publicData,name='publicData'),   # 공공데이터
+    path('publicData2/', views.publicData2,name='publicData2'),   # 공공데이터
 ]

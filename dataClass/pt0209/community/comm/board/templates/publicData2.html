@@ -69,13 +69,13 @@
         {% if publicData %}
           {% for pdata in publicData %}
             <tr>
-              <td><span class='table-notice'>{{pdata.galTitle}}</span></td>
+              <td><span class='table-notice'>{{pdata.orgcd}}</span></td>
               <td class='table-title' id='pInput'>
-                {{pdata.galPhotographyLocation}}
+                {{pdata.orgnm}}
               </td> 
-              <td>{{pdata.galCreatedtime}}</td>
-              <td>{{pdata.galPhotographer}}</td>
-              <td><img id="img01" src="{{pdata.galWebImageUrl}}"></td>
+              <td>{{pdata.orgTlno}}</td>
+              <td>{{pdata.orgZipaddr}}</td>
+              <td>{{pdata.slrYmd}}</td>
             </tr>
           {% endfor %}
         {% else %}

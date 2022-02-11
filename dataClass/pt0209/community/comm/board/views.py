@@ -11,8 +11,9 @@ import json
 
 #공공데이터
 def publicData(request):
+    nowpage = request.GET.get('nowpage',1)
     m_serviceKey ='918RE13GA7OY7ZEmUzApgbOeAcQoZ%2FaHsXWcqPAKQ9YNNPj83KOstRMRIUrCFIAcm9qj2R6b7NFZjp%2FYsYzJLg%3D%3D'
-    url = 'http://api.visitkorea.or.kr/openapi/service/rest/PhotoGalleryService/galleryList?serviceKey={}&pageNo=1&numOfRows=10&MobileOS=ETC&MobileApp=AppTest&arrange=A&_type=json'.format(m_serviceKey)
+    url = 'http://api.visitkorea.or.kr/openapi/service/rest/PhotoGalleryService/galleryList?serviceKey={}&pageNo={}&numOfRows=10&MobileOS=ETC&MobileApp=AppTest&arrange=A&_type=json'.format(m_serviceKey,nowpage)
     response = requests.get(url)
     print("views response : ",response)
     # response의 내용을 text변환
@@ -24,8 +25,24 @@ def publicData(request):
     print(" views bodyData : ",publicData)
     context={'publicData':publicData}
     return render(request,'publicData.html',context)
-    
 
+#공공데이터2
+def publicData2(request):
+    nowpage = request.GET.get('nowpage',1)
+    m_serviceKey ='918RE13GA7OY7ZEmUzApgbOeAcQoZ%2FaHsXWcqPAKQ9YNNPj83KOstRMRIUrCFIAcm9qj2R6b7NFZjp%2FYsYzJLg%3D%3D'
+    url = 'https://api.odcloud.kr/api/apnmOrg/v1/list?page={}&perPage=20&serviceKey={}'.format(nowpage,m_serviceKey)
+    # url에서 정보를 받아옴.
+    response = requests.get(url)
+    print("views response : ",response)
+    # response의 내용을 text변환
+    contents = response.text
+    # text를 json 타입으로 변경
+    json_ob = json.loads(contents)
+    # json데이터 중 필요한 데이터 가져오기
+    publicData = json_ob['data']
+    print(" views bodyData : ",publicData)
+    context={'publicData':publicData}
+    return render(request,'publicData2.html',context)
 
 # 게시판리스트
 def blist(request):
@@ -77,7 +94,7 @@ def blist(request):
 # 뷰페이지
 def bview(request,b_no):
     qs = Fboard.objects.get(b_no=b_no)
-    qs.b_hit += 1;
+    qs.b_hit += 1
     qs.save()
     context={'board':qs}
     return render(request,'bview.html',context)
