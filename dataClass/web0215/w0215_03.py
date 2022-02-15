@@ -14,18 +14,33 @@ soup = BeautifulSoup(res.text,"lxml")
 
 # 1차 xpath내용으로 검색
 # //*[@id="section--inner_content_body_container"]/div[2]/div[1]/div/div[2]
+# 전체 검색 리스트
 div1 = soup.find("div",{"id":"section--inner_content_body_container"})
 itemcards = div1.find_all("div",{"class":"itemcard"})
-# 상품명 출력
-title = itemcards[2].find("span",{"class":"text--title"}).get_text()
-# 가격 출력
-price = itemcards[2].find("strong",{"class":"text--price_seller"}).get_text()
-# 문자에서 숫자만 남기고 문자는 모두 제거 하는 함수
-# 문자열을 1개씩 일어와서 [^0-9] 0-9까지의 숫자를 비교해서 아니면 빈공백 처리
-# sub()는 string에서 pattern과 일치하는 문자들을 해당형태로 교체
-# re.sub(pattern, repl, string)   [^a-zA-Z]
-# intprice = re.sub(r'[^0-9]','',price)
-# print("바뀌기 후 가격 : ",intprice)
-print("제목 : ",title)
-print("바뀌기 전 가격 : ",price)
+for itemcard in itemcards:
+    # 상품명 출력
+    title = itemcard.find("span",{"class":"text--title"}).get_text()
+    # 가격 출력
+    price = itemcard.find("strong",{"class":"text--price_seller"}).get_text()
+    rate = itemcard.find("div",{"class":"seller_awards"})
+    if rate:
+        titlerate = rate["title"]
+        pass
+    else:
+        print("평점 없음")
+        continue
+    review = itemcard.find("span",{"class":"text--reviewcnt"}).get_text()
+    # 문자에서 숫자만 남기고 문자는 모두 제거 하는 함수
+    # 문자열을 1개씩 일어와서 [^0-9] 0-9까지의 숫자를 비교해서 아니면 빈공백 처리
+    # sub()는 string에서 pattern과 일치하는 문자들을 해당형태로 교체
+    # re.sub(pattern, repl, string)   [^a-zA-Z]
+    # intprice = re.sub(r'[^0-9]','',price)
+    # print("바뀌기 후 가격 : ",intprice)
+    print("제목 : ",title)
+    print("바뀌기 전 가격 : ",price)
+    intrate = re.sub(r'[^0-9.]','',titlerate)
+    print("평점 : ",intrate)
+    intreview = re.sub(r'[^0-9]','',review)
+    print("리뷰 : ",intreview)
+    print("-"*30)
 
