@@ -12,7 +12,7 @@ soup = BeautifulSoup(res.text,"lxml")
 
 # ul > li 모든 상품의 전체 리스트를 가져오기
 items = soup.find("div",{"id":"poduct_list_area"}).find_all("li",{"class":"list_4 adcno3"})
-
+count=1
 # 리스트 넘어온 것을 반복해서 출력
 for idx,item in enumerate(items):
     name = item.find("img",{"class":"lazy"})["alt"]
@@ -40,12 +40,13 @@ for idx,item in enumerate(items):
             continue  # 100개이하는 출력하지 않음.
     else:
         continue 
-    print("[ {} ]".format(idx+1))   
+    print("[ {} ]".format(count))   
     print("제목 : ",name)
     print("가격 : ",price)
     print("평점 : ",score)
     print("리뷰 : ",review)
     print("-"*20)
+    count += 1
     
-
-print(len(items))
+print("검색결과 : ",count-1)
+print("전체검색결과 : ",len(items))
