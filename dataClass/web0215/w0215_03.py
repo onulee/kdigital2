@@ -25,11 +25,20 @@ for itemcard in itemcards:
     rate = itemcard.find("div",{"class":"seller_awards"})
     if rate:
         titlerate = rate["title"]
-        pass
+        intrate = re.sub(r'[^0-9.]','',titlerate)
+        if float(intrate)>=4.5:
+            pass
+        else:
+            continue
     else:
-        print("평점 없음")
+        # print("평점 없음")
         continue
     review = itemcard.find("span",{"class":"text--reviewcnt"}).get_text()
+    intreview = re.sub(r'[^0-9]','',review)
+    if int(intreview) >= 200:
+        pass
+    else:
+        continue
     # 문자에서 숫자만 남기고 문자는 모두 제거 하는 함수
     # 문자열을 1개씩 일어와서 [^0-9] 0-9까지의 숫자를 비교해서 아니면 빈공백 처리
     # sub()는 string에서 pattern과 일치하는 문자들을 해당형태로 교체
@@ -38,9 +47,7 @@ for itemcard in itemcards:
     # print("바뀌기 후 가격 : ",intprice)
     print("제목 : ",title)
     print("바뀌기 전 가격 : ",price)
-    intrate = re.sub(r'[^0-9.]','',titlerate)
     print("평점 : ",intrate)
-    intreview = re.sub(r'[^0-9]','',review)
     print("리뷰 : ",intreview)
     print("-"*30)
 
