@@ -21,7 +21,7 @@ for i,img in enumerate(imgs):
         img_res.raise_for_status()
         
         # 저장파일 열기
-        with open("genie_{}.jpg".format(i+1),"wb") as f:
+        with open("images/genie_{}.jpg".format(i+1),"wb") as f:
             # 파일 저장
             f.write(img_res.content)
         print("http:"+img_url)
