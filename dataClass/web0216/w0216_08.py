@@ -51,8 +51,8 @@ browser.find_element_by_xpath('//*[@id="__next"]/div/div[1]/div[4]/div/div/butto
 
 #항공권 검색시간 지연 필요
 # 브라우저 화면에 해당 태그가 나타날때까지 대기, 최대 10초간 대기 함.
-# WebDriverWait(browser,10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="__next"]/div/div[1]/div[5]')))
-time.sleep(10)
+WebDriverWait(browser,10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="__next"]/div/div[1]/div[5]/div/div[2]/div[2]/div')))
+# time.sleep(10)
 
 
 #---------------------------------
@@ -82,6 +82,13 @@ page_url = browser.page_source
 
 soup = BeautifulSoup(page_url,"lxml")
 flights = soup.find_all("div",{"class":"result"})
+
+for flight in flights:
+    print("항공사 : ",flight.b.get_text())
+    print("시간 : ",flight.find("div",{"class":"route"}).get_text())
+    print("금액 : ",flight.find("div",{"class":"domestic_item__2B--k"}).get_text())
+    print("-"*20)
+
 
 # 현재개수 : 20
 print("검색 된 항공권 개수 : ",len(flights))
