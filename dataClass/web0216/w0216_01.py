@@ -31,11 +31,12 @@ for row in data_rows:
     if len(columns) <= 1:
         continue
     
-    data = [column.get_text().strip() for column in columns ]
+    # data = [column.get_text().strip() for column in columns ]
     # writerow로 저장을 하려면 list형태로 저장이 되어야 함.
-    # data=[]
-    # for column in columns:
-    #     data = data.append(column.get_text().strip())
+    data=[]
+    for column in columns:
+        # 에러 : data = data.append(column.get_text().strip())
+        data.append(column.get_text().strip())
         
     # print(data)
     writer.writerow(data)
