@@ -11,8 +11,8 @@ browser.find_element_by_class_name("link_login").click()
 
 # 자바스크립트로 id,pw를 input에 입력해주는 명령어
 input_js = 'document.getElementById("id").value="{id}"; document.getElementById("pw").value="{pw}";'.format(id="aaa",pw="1111")
-# 3초동안 대기
-time.sleep(3)
+# 1-3초동안 대기
+time.sleep(random.uniform(1,3))
 # 자바스크립트 구문 실행
 browser.execute_script(input_js)
 # 2초동안 대기
