@@ -14,7 +14,7 @@ title = "파이썬 파일 첨부"
 content = "파이썬 이메일 파일 첨부 소스 코드입니다."
 
 # list의 주소에 모두 이메일을 보내보세요.
-recvEmails = ['horim159456@naver.com','vawav@naver.com','swaq11@naver.com']
+# recvEmails = ['horim159456@naver.com','vawav@naver.com','swaq11@naver.com']
 
 # for문 사용
 # for recvEmail in recvEmails
