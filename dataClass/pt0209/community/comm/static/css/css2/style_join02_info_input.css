@@ -3,10 +3,7 @@
 * { margin: 0px; padding: 0px;}
 ul, ol{ list-style-type: none; }
 
-@charset "UTF-8";
 
-* { margin: 0px; padding: 0px;}
-ul, ol{ list-style-type: none; }
 
 /* header */
 #nav_up {
@@ -39,7 +36,7 @@ nav {
 }
 nav>a {
 	width: 100px; height: 30px;
-	background: url("../images/ico_set.png") -320px -385px no-repeat;
+	background: url("../../images/ico_set.png") -320px -385px no-repeat;
 	background-size: 800px 800px;
 	position:absolute; left: 40px; top: 25px;
 }
@@ -80,7 +77,7 @@ nav>ul:nth-child(3) li:nth-child(1) a {
 	text-decoration: none;
 	display: inline-block;
 	margin: 0 auto;
-	background: url("../images/ico_set.png") -584px -320px no-repeat;
+	background: url("../../images/ico_set.png") -584px -320px no-repeat;
 	background-size: 800px 800px;
 	letter-spacing: -2px;
 }
@@ -96,7 +93,7 @@ nav>ul:nth-child(3) li:nth-child(2) a {
 	text-decoration: none;
 	display: inline-block;
 	margin: 0 auto;
-	background: url("../images/ico_set.png") -628px -320px no-repeat;
+	background: url("../../images/ico_set.png") -628px -320px no-repeat;
 	background-size: 800px 800px;
 	letter-spacing: -2px;
 }
@@ -120,7 +117,7 @@ section{
 /* 서브 이미지 */
 #subBanner {
 	width: 100%; height: 320px;
-	background: url("../images/join/join_sub.jpg") no-repeat;
+	background: url("../../images/join/join_sub.jpg") no-repeat;
 	background-size: cover;
 }
 
@@ -141,7 +138,7 @@ section{
 	font-weight: 700;
 	line-height: 1.2;
 	padding: 0px 13px 0px 10px;
-	background: url("../images/join/bg_location_li.png") right no-repeat;
+	background: url("../../images/join/bg_location_li.png") right no-repeat;
 }
 #locationN>ul>li:nth-child(3) {
 	padding-right: 0px;
@@ -234,7 +231,7 @@ h4>span {
 .fieldset_class dl dt div {
 	display:inline-block;
 	width: 10px; height: 10px;
-	background: url(../images/join/point_rs.png) no-repeat 45% 88%;
+	background: url(../../images/join/point_rs.png) no-repeat 45% 88%;
 	position:relative; left: 20px;
 	vertical-align: middle;
 }
@@ -427,14 +424,14 @@ input[type="radio"]:not(old) {
 }
 input[type="radio"]:not(old) + label {
 	/*display:inline-block;*/
-	background: url(../images/join/radio_off.jpg) no-repeat 0px 2px;
+	background: url(../../images/join/radio_off.jpg) no-repeat 0px 2px;
 	width: 24px; height: 24px;
 	margin-left: -24px;
 	padding-left: 24px;
 }
 input[type="radio"]:not(old):checked + label {
 	/*display:inline-block;*/
-	background: url(../images/join/radio_on.jpg) no-repeat 0px 2px;
+	background: url(../../images/join/radio_on.jpg) no-repeat 0px 2px;
 	width: 24px; height: 24px;
 	margin-left: -24px;
 	padding-left: 24px;
@@ -445,14 +442,14 @@ input[type="checkbox"]:not(old) {
 }
 input[type="checkbox"]:not(old) + label {
 	/*display:inline-block;*/
-	background: url(../images/join/radio_off.jpg) no-repeat 0px 2px;
+	background: url(../../images/join/radio_off.jpg) no-repeat 0px 2px;
 	width: 24px; height: 24px;
 	margin-left: -24px;
 	padding-left: 24px;
 }
 input[type="checkbox"]:not(old):checked + label {
 	/*display:inline-block;*/
-	background: url(../images/join/radio_on.jpg) no-repeat 0px 2px;
+	background: url(../../images/join/radio_on.jpg) no-repeat 0px 2px;
 	width: 24px; height: 24px;
 	margin-left: -24px;
 	padding-left: 24px;
@@ -662,7 +659,7 @@ input[type="checkbox"]:not(old):checked + label {
 	width: 160px; height: 48px;
 	box-sizing: border-box;
 	display: block;
-	background: url("../images/ico_set.png") no-repeat -320px -320px;
+	background: url("../../images/ico_set.png") no-repeat -320px -320px;
 	background-size: 800px 800px;
 }
 #fl_l>p {

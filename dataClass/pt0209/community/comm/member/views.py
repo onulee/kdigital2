@@ -1,7 +1,14 @@
 from django.shortcuts import redirect, render
 from member.models import Member
 
-# Create your views here.
+# 회원가입1
+def join01(request):
+    return render(request,'join01.html')
+# 회원가입2
+def join02(request):
+    return render(request,'join02_in.html')
+
+# 로그인
 def login(request):
     if request.method == 'GET':
         print("view get : login")
