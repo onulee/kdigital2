@@ -11,9 +11,13 @@ from selenium.webdriver.common.by import By
 # 브라우저 화면의 상태를 알려주는 메소드
 from selenium.webdriver.support import expected_conditions as EC
 
+options = webdriver.ChromeOptions()
+# 접속화면을 띄우지 않고 실행시킴
+options.headless = True
+options.add_argument("window-size=1920x1080")
 
 # 크롬드라이버 로딩
-browser = webdriver.Chrome()
+browser = webdriver.Chrome(options=options)
 browser.maximize_window() # 윈도우 창 최대화
 url ='https://flight.naver.com/'
 # url이동
@@ -52,8 +56,8 @@ browser.find_element_by_xpath('//*[@id="__next"]/div/div[1]/div[4]/div/div/butto
 
 #항공권 검색시간 지연 필요
 # 브라우저 화면에 해당 태그가 나타날때까지 대기, 최대 10초간 대기 함.
-WebDriverWait(browser,10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="__next"]/div/div[1]/div[5]/div/div[2]/div[2]/div')))
-# time.sleep(10)
+# WebDriverWait(browser,10).until(EC.presence_of_element_located((By.XPATH,'//*[@id="__next"]/div/div[1]/div[5]/div/div[2]/div[2]/div')))
+time.sleep(10)
 
 
 #---------------------------------
