@@ -5,6 +5,7 @@ app_name='board'
 urlpatterns = [
     path('customer/notice/', views.notice,name='notice'),      # 공지사항 리스트
     path('<str:b_no>/event/event_view/', views.event_view,name='event_view'),  # 이벤트뷰
+    path('event/comlist/', views.comlist,name='comlist'),      # 댓글 리스트
     path('blist/', views.blist,name='blist'),                  # 게시판리스트
     path('bwrite/', views.bwrite,name='bwrite'),               # 글쓰기form
     path('bwriteOk/', views.bwriteOk,name='bwriteOk'),         # 글쓰기저장

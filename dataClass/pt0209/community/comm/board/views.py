@@ -1,5 +1,7 @@
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from board.models import Fboard
+from board.models import Comment
 from django.db.models import Q, F
 from django.core.paginator import Paginator
 from member.models import Member
@@ -15,14 +17,26 @@ def notice(request):
     # page
     qs = Fboard.objects.all()
     context = {'blist':qs}
-    
-    
     return render(request,'customer/notice.html',context)
 
 # 이벤트 뷰
 def event_view(request,b_no):
     print("views b_no : ",b_no)
-    return render(request,'event/event_view.html')
+    context={"b_no":b_no}
+    return render(request,'event/event_view.html',context)
+
+
+# 하단댓글 Ajax리스트 해당게시판의 번호로 검색해서 가져옴.
+def comlist(request):
+    b_no = request.GET.get("b_no")
+    print("views b_no : ",b_no)
+    qs = Comment.objects.all().order_by('-c_no')
+    clist = list(qs.values())
+    # context={'clist':qs}
+    return JsonResponse(clist,safe=False)
+
+
+
 
 
 #공공데이터
