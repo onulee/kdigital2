@@ -8,6 +8,10 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'css/css2/style_footer.css' %}">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<title>회원가입 - 회원정보입력</title>
+		<style>
+			.blue{color:blue;}
+			.red{color:red;}
+		</style>
 		<script>
 			{% comment %} $(function(){
 
@@ -35,19 +39,20 @@
 					success:function(data){            //데이터 전달이 성공할때
 						alert("ajax 통신완료")
 						alert(data.result)
-						$("#id_title").text(data.result) 
+						if(data.result=='true'){
+							$("#id_title").removeClass() 
+							$("#id_title").addClass('blue') 
+							$("#id_title").text("id 사용가능합니다.") 
+						}else{
+							$("#id_title").removeClass() 
+							$("#id_title").addClass('red') 
+							$("#id_title").text("id가 존재합니다. 다시 입력하세요.") 
+						}	
 					},error:function(){                //데이터 전달이 실패할때
 						alert("실패")
 					}
 				})
-
-
-
-
 			}
-
-
-
 		</script>
 	</head>
 	<body>

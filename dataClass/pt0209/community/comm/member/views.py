@@ -15,9 +15,9 @@ def idcheck(request):
             
     if qs is None:
         # 중복되는 id가 없음.
-        context={'result':'id가 사용가능합니다'}
+        context={'result':'true'}
     else:
-        context={'result':'id가 존재합니다. 다른 id를 입력하세요'}
+        context={'result':'false'}
     return JsonResponse(context)
 
 
