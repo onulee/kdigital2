@@ -203,14 +203,23 @@
 								data:{ 'b_no':{{b_no}}   },
 								dataType:"json",
 								success:function(data){
-									// for문으로 댓글 5개 data_html저장해서 html소스 넣기
+									// for문으로 댓글을 data_html저장해서 html소스 넣기
 									alert("성공")
-									alert(data)
+									var data_html=""
+									for ( var i in data){
+										data_html += '<ul>'
+										data_html += '<li class="name">'+data[i].member_id+'<span>['+data[i].c_date+']</span></li>'
+										data_html += '<li class="txt">'+data[i].c_content+'</li>'
+										data_html += '<li class="btn">'
+										data_html += '<a href="#" class="rebtn">수정</a>'
+										data_html += '<a href="#" class="rebtn">삭제</a>'
+										data_html += '</li>'
+										data_html += '</ul>'
+										//alert(data[i].c_content)
 
+									}
 
-
-
-
+									$(".replyBox").html(data_html)
 
 								},error:function(){
 									alert("실패")
@@ -234,15 +243,9 @@
 						</ul>
 						<p class="ntic">※ 비밀번호를 입력하시면 댓글이 비밀글로 등록 됩니다.</p>
 					</div>
+					<!-- 댓글 추가 됨 -->
 					<div class="replyBox">
-						<ul>
-							<li class="name">jjabcde <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></li>
-							<li class="txt">대박!!! 이거 저한테 완전 필요한 이벤트였어요!!</li>
-							<li class="btn">
-								<a href="#" class="rebtn">수정</a>
-								<a href="#" class="rebtn">삭제</a>
-							</li>
-						</ul>
+						
 					</div>
 
 					<!--댓글수정입력창-->
