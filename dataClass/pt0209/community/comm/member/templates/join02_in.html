@@ -55,6 +55,13 @@
 			}// idcheck
 
 			function pwcheck(){
+				// id값이 있는지 확인
+				if($("#pw1").val()=="" || $("#pw1").val()==null ){
+					alert("pw를 입력하셔야 합니다.")
+					$("#id").focus()
+					return false
+				}
+
 				alert("비밀번호 체크호출")
 				if($("#pw1").val()==$("#pw2").val()){
 					alert("비밀번호가 일치합니다.")

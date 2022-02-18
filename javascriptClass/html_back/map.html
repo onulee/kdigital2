@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>쟈뎅 쇼핑몰</title>
+
+<style type="text/css">
+	body {margin:0px;font-size:0.75em;font-family:dutum, 돋움, arial, tahoma, sans-serif;padding:10px;}
+	h1 {background-color:#0396db;color:#fff;padding:5px 0px;margin:0px 0 10px 0; clear:both; padding-left:10px;}
+	h2 {font-size:1.5em;}
+	h3 {text-decoration:underline;}
+	ol li {padding-bottom:3px; font-weight:bold;}
+	ol li a, ol li span {font-weight:normal;}
+	ol li ol {margin-top:10px;}
+	ol li ol li {font-weight:normal;}
+	li.cancel {text-decoration:line-through;}
+	span {font-size:10px;color:#f00;font-family:Verdana;padding-left:20px;background:url(img/bu_temp_01.gif) 10px 2px no-repeat;}
+	span.cancel {font-weight:bold;color:red;}
+	span.info {font-weight:normal;font-size:11px;color:#000;}
+	a {color:#0a84bc;text-decoration:none;}
+	a:hover {color:#0a84bc; text-decoration:underline}
+	li.del span, li.del a, li.del strong {text-decoration:line-through;color:#CCCCCC;}
+	strong {font-weight:normal;}
+	div.guide {float:left;width:400px;line-height:16px;}
+	div.guide ol li {font-weight:normal;}
+	div.guide ol li strong {font-weight:bold;}
+	div.filelist {float:left;width:500px;}
+</style>
+</head>
+
+<body>
+<h1>쟈뎅 쇼핑몰</h1>
+<div style="width:1400px;">
+	<div class="guide">
+		<h2>코딩가이드 - Front</h2>
+		Layout
+		<ol>
+			<li><a href="layout/main.html">main layout</a> - quickmenu</li>
+			<li><a href="layout/sub.html">sub layout</a></li>
+			<li><a href="layout/element.html">element</a></li>
+		</ol>
+		<h3>이미지명 규칙 및 경로</h3>
+		<ol>
+			<li><strong>배경 이미지 :</strong> ../images/bg/이미지명.gif</li>
+			<li><strong>메뉴 이미지 :</strong> ../images/navi/이미지명.gif</li>
+			<li><strong>아이콘 이미지 :</strong> ../images/ico/이미지명.gif</li>
+			<li><strong>버튼 이미지 :</strong> ../images/btn/이미지명.gif</li>
+		</ol>
+		
+		<h3>css 경로</h3>
+		<ol>
+			<li><strong>css :</strong> ../css/파일명.css</li>
+		</ol>
+		
+		<h3>js 경로</h3>
+		<ol>
+			<li><strong>js :</strong> ../js/파일명.js</li>
+		</ol>
+
+		<h3>note</h3>
+		<ol>
+			<li></li>
+		</ol>
+	</div>
+
+
+	<div class="filelist">
+		<h2>Front</h2>
+		<ol>
+			<li>제품
+				<ol>
+					<li><a href="product/list.html">제품리스트 - quickmenu</a> <span>2014.05.08</span></li>
+					<li><a href="product/detail.html">제품상세</a> <span>2014.05.09</span><br/>
+						<a href="#">제품상세-포토 상품평 작성(해당페이지 링크)</a> <span>2014.05.09</span><br/>
+						<a href="#">제품상세-구매 후기 작성(해당페이지 링크)</a> <span>2014.05.09</span><br/>
+						<a href="#">제품상세-문의하기(해당페이지 링크)</a> <span>2014.05.09</span><br/>
+						<a href="#">제품상세-비밀번호 입력(해당페이지 링크)</a> <span>2014.05.09</span>
+					</li>
+					<li><a href="product/search.html">제품검색</a> <span>2014.05.09</span></li>
+				</ol>
+			</li>
+
+			<li>EVENT
+				<ol>
+					<li><a href="event/event.html">진행중 이벤트 - quickmenu</a> <span>2014.05.07</span><br/>
+						<a href="event/event_view.html">진행중 이벤트-글보기</a> <span>2014.05.07</span><br/>
+						<a href="#">진행중 이벤트-글보기-비밀번호입력(해당페이지에 링크)</a> <span>2014.05.07</span></li>
+					<li><a href="event/fin_event.html">종료된 이벤트</a> <span>2014.05.07</span><br/>
+						<a href="event/fin_event_view.html">종료된 이벤트-글보기</a> <span>2014.05.07</span>
+					</li>
+					<li><a href="event/prizewinner.html">당첨자 발표</a> <span>2014.05.07</span><br/>
+						<a href="event/prizewinner_view.html">당첨자 발표-글보기</a> <span>2014.05.07</span>
+					</li>
+				</ol>
+			</li>
+
+			<li>커뮤니티
+				<ol>
+					<li><a href="community/expr.html">체험단</a> <span>2014.05.01</span><br/>
+						<a href="community/expr_view.html">체험단 진행중 - 글보기(체험단신청)</a> <span>2014.05.01</span><br/>
+						<a href="community/expr_review.html">체험단 진행중 - 글보기(체험리뷰-리스트)</a> <span>2014.05.07</span><br/>
+					</li>
+					<li><a href="community/epilogue.html">사용후기 - 포토 구매후기</a> <span>2014.05.01</span><br/>
+						<a href="community/epilogue_view.html">사용후기 - 포토 구매후기 - 글보기</a> <span>2014.05.01</span><br/>
+						<a href="community/epilogue_write.html">사용후기 - 포토 구매후기 - 글쓰기</a> <span>2014.05.01</span>
+					</li>
+					<li><a href="community/comment.html">사용후기 - 상품평</a> <span>2014.05.01</span><br/>
+						<a href="community/comment_view.html">사용후기 - 상품평 - 글보기</a> <span>2014.05.01</span><br/>
+						<a href="community/comment_write.html">사용후기 - 상품평 - 글쓰기</a> <span>2014.05.01</span>
+					</li>
+					<li><a href="community/enjoy.html">ENJOY COFFEE</a> <span>2014.05.07</span><br/>
+						<a href="community/enjoy_view.html">ENJOY COFFEE - 글보기</a> <span>2014.05.07</span>
+					</li>
+				</ol>
+			</li>
+
+			<li>고객센터
+				<ol>
+					<li><a href="customer/notice.html">공지사항</a> <span>2014.05.07</span><br/>
+						<a href="customer/notice_view.html">공지사항 - 글보기</a> <span>2014.05.07</span></li>
+					<li><a href="customer/inquiry.html">1:1문의</a> <span>2014.05.07</span></li>
+					<li><a href="customer/faq.html">FAQ</a> <span>2014.05.07</span></li>
+					<li><a href="customer/guide.html">이용안내</a> <span></span></li>
+				</ol>
+			</li>
+
+			<li>MEMBERSHIP
+				<ol>
+					<li><a href="member/login.html">로그인</a> <span>2014.04.21</span></li>
+					<li><a href="member/step01.html">회원가입 - 실명확인</a> <span>2014.04.21</span></li>
+					<li><a href="member/step02.html">회원가입 - 약관 동의</a> <span>2014.04.21</span></li>
+					<li><a href="member/step03.html">회원가입 - 회원정보 입력</a> <span>2014.04.21</span></li>
+					<li><a href="member/step04.html">회원가입 - 가입완료</a> <span>2014.04.22</span></li>
+					<li><a href="#">회원가입 - 우편번호(해당페이지에 링크)</a> <span>2014.04.22</span></li>
+					<li><a href="member/idsearch.html">아이디/비밀번호 찾기</a> <span>2014.04.21</span></li>
+				</ol>
+			</li>
+
+			<li>MY PAGE
+				<ol>
+					<li><a href="mypage/ordercheck.html">주문/배송 조회</a> <span>2014.04.23</span></li>
+					<li><a href="mypage/takeback_delivery.html">주문/배송 조회, 버튼클릭시 - 반품/교환 현황</a> <span>2014.04.24</span></li>
+					<li><a href="mypage/takeback_state.html">반품/교환 현황</a> <span>2014.04.24</span></li>
+					<li><a href="mypage/cart.html">장바구니</a> <span>2014.04.24</span></li>
+					<li><a href="mypage/wishlist.html">위시리스트</a> <span>2014.04.24</span></li>
+					<li><a href="mypage/coupon.html">나의 쿠폰</a> <span>2014.04.24</span></li>
+					<li><a href="mypage/point.html">나의 포인트</a> <span>2014.04.25</span></li>
+					<li><a href="mypage/inquiry.html">1:1문의 - 리스트</a> <span>2014.04.25</span><br/>
+						<a href="mypage/inquiry_write.html">ㄴ 1:1문의 - 글쓰기</a> <span>2014.04.25</span><br/>
+						<a href="mypage/inquiry_view.html">ㄴ 1:1문의 - 글보기</a> <span>2014.04.25</span>
+					</li>
+					<li><a href="mypage/change_info.html">회원정보수정</a> <span>2014.04.25</span></li>
+					<li><a href="mypage/get_leave.html">회원탈퇴</a> <span>2014.04.25</span></li>
+				</ol>
+			</li>
+
+			<li>비회원 - 주문조회
+				<ol>
+					<li><a href="nonmember/ordercheck.html">비회원 주문조회</a> <span>2014.04.25</span></li>
+					<li><a href="nonmember/takeback_delivery.html">주문/배송 조회, 버튼클릭시 - 반품/교환 현황</a> <span>2014.04.25</span></li>
+					<li><a href="nonmember/takeback_state.html">반품/교환 현황</a> <span>2014.04.25</span></li>
+					<li><a href="nonmember/cart.html">장바구니</a> <span>2014.04.28</span></li>
+				</ol>
+			</li>
+
+			<li>주문/결제
+				<ol>
+					<li><a href="payment/payment.html">주문결제</a> <span>2014.04.30</span></li>
+					<li><a href="#">주문결제 - 쿠폰적용/목록 (해당페이지에 링크)</a> <span>2014.04.30</span></li>
+					<li><a href="payment/order_confirmation.html">주문확인</a> <span>2014.04.30</span></li>
+				</ol>
+			</li>
+
+			<li>메일링
+				<ol>
+					<li><a href="email/payment.html">결제완료</a> <span>2014.05.12</span></li>
+					<li><a href="email/password.html">비밀번호찾기</a> <span>2014.05.12</span></li>
+					<li><a href="email/id.html">아이디찾기</a> <span>2014.05.12</span></li>
+					<li><a href="email/delivery.html">제품발송</a> <span>2014.05.12</span></li>
+					<li><a href="email/refund.html">주문취소환불</a> <span>2014.05.12</span></li>
+					<li><a href="email/join.html">회원가입</a> <span>2014.05.12</span></li>
+				</ol>
+			</li>
+
+		</ol>
+	</div>
+</div>
+</body>
+</html> 

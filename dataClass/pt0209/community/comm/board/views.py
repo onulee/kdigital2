@@ -9,6 +9,10 @@ import requests # 웹스크롤링
 import json
 
 
+def notice(request):
+    return render(request,'customer/notice.html')
+
+
 #공공데이터
 def publicData(request):
     nowpage = request.GET.get('nowpage',1)
