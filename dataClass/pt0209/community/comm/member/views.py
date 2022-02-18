@@ -1,6 +1,9 @@
 from django.shortcuts import redirect, render
 from member.models import Member
 
+# id중복체크
+def idcheck(request):
+    return render(request,'join01.html')
 # 회원가입1
 def join01(request):
     return render(request,'join01.html')

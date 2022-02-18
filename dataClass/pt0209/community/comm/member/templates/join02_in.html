@@ -9,14 +9,43 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<title>회원가입 - 회원정보입력</title>
 		<script>
-			$(function(){
+			{% comment %} $(function(){
 
 				//중복확인 버튼 클릭시
 				$("#idBtn").click(function(){
 					//alert("확인");
 					window.open("idCheck.html","childForm","width=800,height=600,resizable=no,scrollbars=no");
 				});
-			});
+			}); {% endcomment %}
+
+		    function idcheck(){
+				// id값이 있는지 확인
+				if($("#id").val()=="" || $("#id").val()==null ){
+					alert("id를 입력하셔야 중복확인이 가능합니다.")
+					$("#id").focus()
+					return false
+				}
+				alert('id호출 : '+$("#id").val())
+
+				//Ajax 구조	
+				$.ajax({
+					url:'',        //url
+					type:'GET',    //get,post
+					data:{'user_id':$("#id").val()},   //전달할 데이터
+					success:function(data){            //데이터 전달이 성공할때
+						alert("성공")
+					},error:function(){                //데이터 전달이 실패할때
+						alert("실패")
+					}
+				})
+
+
+
+
+			}
+
+
+
 		</script>
 	</head>
 	<body>
@@ -107,7 +136,7 @@
 						</dt>
 						<dd>
 							<input type="text" id="id" name="id" minlength="4" maxlength="16" required/>
-							<input type="button" id="idBtn" value="중복확인"/>
+							<input type="button" onclick="idcheck()" id="idBtn" value="중복확인"/> * 현재 아이디는 사용할수 없습니다.
 							<span>4~16자리의 영문, 숫자, 특수기호(_)만 사용하실 수 있습니다.</span>
 							<span>첫 글자는 영문으로 입력해 주세요.</span>
 						</dd>
