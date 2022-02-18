@@ -9,8 +9,20 @@ import requests # 웹스크롤링
 import json
 
 
+# 공지사항 리스트
 def notice(request):
-    return render(request,'customer/notice.html')
+    # 페이지 번호가 넘어와야 함.
+    # page
+    qs = Fboard.objects.all()
+    context = {'blist':qs}
+    
+    
+    return render(request,'customer/notice.html',context)
+
+# 이벤트 뷰
+def event_view(request,b_no):
+    print("views b_no : ",b_no)
+    return render(request,'event/event_view.html')
 
 
 #공공데이터
