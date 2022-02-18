@@ -1,9 +1,26 @@
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from member.models import Member
 
-# id중복체크
+# Ajax id중복체크
 def idcheck(request):
-    return render(request,'join01.html')
+    # ajax에서 넘어온 user_id값
+    id = request.GET.get('user_id')
+    print("views id : ",id)
+    # id가 존재하는지 확인
+    try:
+        qs = Member.objects.get(m_id=id)
+    except:
+        qs = None
+            
+    if qs is None:
+        # 중복되는 id가 없음.
+        context={'result':'id가 사용가능합니다'}
+    else:
+        context={'result':'id가 존재합니다. 다른 id를 입력하세요'}
+    return JsonResponse(context)
+
+
 # 회원가입1
 def join01(request):
     return render(request,'join01.html')

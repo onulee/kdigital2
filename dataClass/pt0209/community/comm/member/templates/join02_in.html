@@ -29,11 +29,12 @@
 
 				//Ajax 구조	
 				$.ajax({
-					url:'',        //url
+					url:'/member/idcheck',        //url
 					type:'GET',    //get,post
 					data:{'user_id':$("#id").val()},   //전달할 데이터
 					success:function(data){            //데이터 전달이 성공할때
-						alert("성공")
+						alert("ajax 통신완료")
+						alert(data.result)
 					},error:function(){                //데이터 전달이 실패할때
 						alert("실패")
 					}
@@ -136,9 +137,9 @@
 						</dt>
 						<dd>
 							<input type="text" id="id" name="id" minlength="4" maxlength="16" required/>
-							<input type="button" onclick="idcheck()" id="idBtn" value="중복확인"/> * 현재 아이디는 사용할수 없습니다.
-							<span>4~16자리의 영문, 숫자, 특수기호(_)만 사용하실 수 있습니다.</span>
-							<span>첫 글자는 영문으로 입력해 주세요.</span>
+							<input type="button" onclick="idcheck()" id="idBtn" value="중복확인"/> 
+							<span id="idch_title">* 현재 아이디는 사용할수 없습니다.</span>
+							<span>4~16자리의 영문, 숫자, 특수기호(_)만 사용하실 수 있습니다. 첫 글자는 영문으로 입력</span>
 						</dd>
 					</dl>
 					<dl id="join_pw1_dl">
