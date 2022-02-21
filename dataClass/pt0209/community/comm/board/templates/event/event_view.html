@@ -214,7 +214,12 @@
 										data_html += '<li class="txt">'+data[i].c_content+'</li>'
 										data_html += '<li class="btn">'
 										data_html += '<a href="#" class="rebtn">수정</a>'
-										data_html += '<a onclick="commdeletebtn()" class="rebtn">삭제</a>'
+										
+										
+										data_html += '<a onclick="commdeletebtn('+data[i].c_no+')" class="rebtn">삭제</a>'
+										
+										
+										
 										data_html += '</li>'
 										data_html += '</ul>'
 									}
@@ -225,17 +230,18 @@
 							})
 						}) //jQuery
 
+
 						//댓글삭제
-						function commdeletebtn(){
-						    //alert("댓글삭제 호출")
+						function commdeletebtn(c_no){
+						    alert("댓글삭제 호출 : "+c_no)
 							if(confirm("댓글을 삭제하시겠습니까?")){
 								$.ajax({
-									url:'',
+									url:'{% url "board:commdelete" %}',
 									type:'GET',
-									data:{"b_no":b_no},
+									data:{ "c_no": c_no  },
 									dataType:'json',
 									success:function(data){
-	
+										alert(data)
 									},
 									error:function(){
 										alert('댓글삭제 실패')
@@ -245,6 +251,9 @@
 								return false
 							}
 						}//댓글삭제
+
+
+
 
 						// 댓글등록
 						function commwriteBtn(){

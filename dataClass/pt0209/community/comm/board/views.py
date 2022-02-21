@@ -6,6 +6,8 @@ from django.db.models import Q, F
 from django.core.paginator import Paginator
 from member.models import Member
 from django.db.models import Max,Min,Avg 
+from django.core import serializers
+from django.http import HttpResponse
 import urllib # 한글인코딩
 import requests # 웹스크롤링
 import json
@@ -32,13 +34,21 @@ def comlist(request):
     print("views b_no : ",b_no)
     qs = Comment.objects.all().order_by('-c_no')
     clist = list(qs.values())
-    # context={'clist':qs}
-    return JsonResponse(clist,safe=False)
+    return JsonResponse(clist,safe=False) # safe=False일때 list, safe=True일 때에는 dict타입이외, TypeError 예외 발생
+    # clist = serializers.serialize('json', qs)
+    # return HttpResponse(clist, content_type="text/json-comment-filtered")
 
+# 하단댓글 삭제(Ajax)
+def commdelete(request):
+    c_no = request.GET.get('c_no')
+    qs = Comment.objects.get(c_no=c_no)
+    qs.delete()    
+    context={'result':'댓글이 삭제되었습니다'}
+    return JsonResponse(context)
+    
 
 # 하단댓글 저장(Ajax)
 def commwrite(request):
-    
     # c_no 1씩증가 함수
     def comm_count():
         # c_no 수동으로 1씩증가해서 저장시켜줌.
@@ -48,7 +58,6 @@ def commwrite(request):
         return max_no
     # 1씩증가 함수 호출
     c_no = comm_count()
-    
     
     id = request.session.get('session_id')  # session에서 id값 변수저장
     print("views id : ",id)
