@@ -10,6 +10,7 @@ urlpatterns = [
     path('event/comlist/', views.comlist,name='comlist'),      # 댓글 리스트
     path('event/commwrite/', views.commwrite,name='commwrite'), # 댓글 저장
     path('event/commdelete/', views.commdelete,name='commdelete'), # 댓글 삭제
+    path('event/commupdateok/', views.commupdateok,name='commupdateok'), # 댓글 수정저장
     
     
     path('blist/', views.blist,name='blist'),                  # 게시판리스트

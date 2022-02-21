@@ -234,17 +234,41 @@
 							data_html += '<li class="name">'+member_id+'<span>['+c_date+']</span></li>'
 							data_html += '<li class="txt"><textarea class="replyType">'+c_content+'</textarea></li>'
 							data_html += '<li class="btn">'
-							data_html += '<a onclick="commupdateokbtn('+c_no +',\'' +member_id+'\',\''+c_date+ '\',\''+ c_content +'\')" class="rebtn">저장</a>'
+							data_html += '<a onclick="commupdateokbtn('+c_no +')" class="rebtn">저장</a>'
 							data_html += '<a href="#" class="rebtn">취소</a>'
 							data_html += '</li>'
 							$("#"+c_no).html(data_html)
 						}
 
 						//댓글수정저장
-						function commupdateokbtn(c_no,member_id,c_date,c_content){
+						function commupdateokbtn(c_no){
 							alert("댓글수정 번호호출 : "+c_no)
-							alert("댓글수정 번호호출 : "+member_id)
-							alert("댓글수정 번호호출 : "+c_content)
+							alert($("#"+c_no+" .replyType").val())
+
+							$.ajax({
+								url:'{% url "board:commupdateok" %}',
+								type:'GET',
+								// 기존c_content 내용을 input에 있는 replyType클래스 val()을 변경
+								data:{ "c_no": c_no,"c_content":$("#"+c_no+" .replyType").val() },
+								dataType:'json',
+								success:function(data){
+									alert(data)
+									var data_html=""
+									data_html += '<li class="name">'+data.member_id+'<span>['+data.c_date+']</span></li>'
+									data_html += '<li class="txt">'+data.c_content+'</li>'
+									data_html += '<li class="btn">'
+									data_html += '<a href="#" class="rebtn">수정</a>'
+									data_html += '<a href="#" class="rebtn">삭제</a>'
+									data_html += '</li>'
+									//html 모두 지운후 추가, prepend 처음에 추가, uppend 마지막 추가
+									$("#"+c_no).html(data_html)
+
+								},
+								error:function(){
+									alert('수정저장 실패')
+								}
+							}) 
+
 
 						}
 

@@ -45,7 +45,22 @@ def commdelete(request):
     qs.delete()    
     context={'result':'댓글이 삭제되었습니다'}
     return JsonResponse(context)
-    
+ 
+# 댓글수정저장 
+def commupdateok(request):
+    c_no = request.GET.get('c_no')
+    c_content = request.GET.get('c_content')
+    qs = Comment.objects.get(c_no=c_no)
+    qs.c_content = c_content
+    qs.save()
+    context={
+        "c_no": qs.c_no, 
+        "member_id": qs.member_id, 
+        "c_pw": qs.c_pw,
+        "c_content":qs.c_content,
+        "c_date":qs.c_date 
+    }
+    return JsonResponse(context)    
 
 # 하단댓글 저장(Ajax)
 def commwrite(request):
@@ -71,6 +86,7 @@ def commwrite(request):
     # 5.c_content
     c_content = request.GET.get("c_content")  #ajax으로 넘어온 content변수 저장
     # 6.c_date
+    
     # 댓글저장
     qs = Comment(c_no=c_no,member=member,fboard=fboard,c_pw=c_pw,c_content=c_content)
     qs.save()
