@@ -213,7 +213,8 @@
 										data_html += '<li class="name">'+data[i].member_id+'<span>['+data[i].c_date+']</span></li>'
 										data_html += '<li class="txt">'+data[i].c_content+'</li>'
 										data_html += '<li class="btn">'
-										data_html += '<a href="#" class="rebtn">수정</a>'
+										//                        commdeletebtn(19,'aaa','2022-02-21','bbb글을 등록합니다.')             	
+										data_html += '<a onclick="commupdatebtn('+data[i].c_no +',\'' +data[i].member_id+'\',\''+data[i].c_date+ '\',\''+ data[i].c_content +'\')" class="rebtn">수정</a>'
 										data_html += '<a onclick="commdeletebtn('+data[i].c_no +')" class="rebtn">삭제</a>'
 										data_html += '</li>'
 										data_html += '</ul>'
@@ -224,6 +225,30 @@
 								}
 							})
 						}) //jQuery
+
+
+						//댓글수정입력창 생성
+						function commupdatebtn(c_no,member_id,c_date,c_content){
+							alert("댓글수정 번호호출 : "+c_no)
+							var data_html=''
+							data_html += '<li class="name">'+member_id+'<span>['+c_date+']</span></li>'
+							data_html += '<li class="txt"><textarea class="replyType">'+c_content+'</textarea></li>'
+							data_html += '<li class="btn">'
+							data_html += '<a onclick="commupdateokbtn('+c_no +',\'' +member_id+'\',\''+c_date+ '\',\''+ c_content +'\')" class="rebtn">저장</a>'
+							data_html += '<a href="#" class="rebtn">취소</a>'
+							data_html += '</li>'
+							$("#"+c_no).html(data_html)
+						}
+
+						//댓글수정저장
+						function commupdateokbtn(c_no,member_id,c_date,c_content){
+							alert("댓글수정 번호호출 : "+c_no)
+							alert("댓글수정 번호호출 : "+member_id)
+							alert("댓글수정 번호호출 : "+c_content)
+
+						}
+
+
 
 
 						//댓글삭제
