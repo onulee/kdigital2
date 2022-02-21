@@ -202,7 +202,7 @@
 							$.ajax({
 								url:"{% url 'board:comlist' %}",
 								type:"GET",
-								data:{ 'b_no':{{b_no}}   },
+								data:{ 'b_no':{{b_no}} },
 								dataType:"json",
 								success:function(data){
 									// for문으로 댓글을 data_html저장해서 html소스 넣기
@@ -227,8 +227,16 @@
 						}) //jQuery
 
 
+						//수정창이 열려있는지 확인하는 변수
+						var updateCheck=0
 						//댓글수정입력창 생성
 						function commupdatebtn(c_no,member_id,c_date,c_content){
+							if(updateCheck==1){
+								alert("수정창이 1개 열려 있습니다. \n 열려있는 창을 저장 또는 취소후 \n 수정이 가능합니다.")
+								return false
+							}
+							
+							updateCheck=1 //수정창이 열려있음
 							alert("댓글수정 번호호출 : "+c_no)
 							var data_html=''
 							data_html += '<li class="name">'+member_id+'<span>['+c_date+']</span></li>'
@@ -242,6 +250,7 @@
 
 						//댓글수정 취소
 						function commcancelbtn(c_no,member_id,c_date,c_content){
+							updateCheck=0 //댓글수정가능
 							alert("댓글수정취소 호출 : "+ c_no)
 
 							var data_html=""
@@ -254,13 +263,12 @@
 							//html 모두 지운후 추가, prepend 처음에 추가, uppend 마지막 추가
 							$("#"+c_no).html(data_html)
 
-
-
 						}
 
 
 						//댓글수정저장
 						function commupdateokbtn(c_no){
+							updateCheck=0 //댓글수정가능
 							alert("댓글수정 번호호출 : "+c_no)
 							alert($("#"+c_no+" .replyType").val())
 
