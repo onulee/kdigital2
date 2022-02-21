@@ -211,11 +211,27 @@
 									for ( var i in data){
 										data_html += '<ul id='+data[i].c_no +'>'
 										data_html += '<li class="name">'+data[i].member_id+'<span>['+data[i].c_date+']</span></li>'
-										data_html += '<li class="txt">'+data[i].c_content+'</li>'
+										// 로그인 아이디와 게시글 아이디가 같은지 비교
+										if( '{{request.session.session_id}}'!=data[i].member_id){
+											// 게시글 비번이 있는지 확인
+											if(data[i].c_pw ==""){
+												data_html += '<li class="txt">'+data[i].c_content+'</li>'
+											}else{
+												data_html += '<li class="txt">'
+												data_html += '<a class="passwordBtn"><span class="orange">※ 비밀글입니다.</span></a>'
+												data_html += '</li>'
+											}
+										}else{
+											data_html += '<li class="txt">'+data[i].c_content+'</li>'
+										}
+
 										data_html += '<li class="btn">'
-										//                        commdeletebtn(19,'aaa','2022-02-21','bbb글을 등록합니다.')             	
-										data_html += '<a onclick="commupdatebtn('+data[i].c_no +',\'' +data[i].member_id+'\',\''+data[i].c_date+ '\',\''+ data[i].c_content +'\')" class="rebtn">수정</a>'
-										data_html += '<a onclick="commdeletebtn('+data[i].c_no +')" class="rebtn">삭제</a>'
+										// 함수 매개변수 타입 : commdeletebtn(19,'aaa','2022-02-21','bbb글을 등록합니다.')             	
+										// 섹션id와 데이터id가 같은지 비교해서 다르면 수정,삭제 버튼을 보이지 않게 함.
+										if( '{{request.session.session_id}}'==data[i].member_id){
+											data_html += '<a onclick="commupdatebtn('+data[i].c_no +',\'' +data[i].member_id+'\',\''+data[i].c_date+ '\',\''+ data[i].c_content +'\')" class="rebtn">수정</a>'
+											data_html += '<a onclick="commdeletebtn('+data[i].c_no +')" class="rebtn">삭제</a>'
+										}
 										data_html += '</li>'
 										data_html += '</ul>'
 									}
@@ -265,12 +281,10 @@
 
 						}
 
-
 						//댓글수정저장
 						function commupdateokbtn(c_no){
 							updateCheck=0 //댓글수정가능
 							alert("댓글수정 번호호출 : "+c_no)
-							alert($("#"+c_no+" .replyType").val())
 
 							$.ajax({
 								url:'{% url "board:commupdateok" %}',
@@ -301,7 +315,6 @@
 
 						//댓글삭제
 						function commdeletebtn(c_no){
-						    alert("댓글삭제 호출 : "+c_no)
 							if(confirm("댓글을 삭제하시겠습니까?")){
 								$.ajax({
 									url:'{% url "board:commdelete" %}',
@@ -378,16 +391,11 @@
 					</div>
 					<!-- 댓글 추가 됨 -->
 					<div class="replyBox">
-						
-
-
 
 
 					</div>
-
 					<!--댓글수정입력창-->
 					<!--
-
 						<ul>
 							<li class="name">jjabcde <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></li>
 							<li class="txt"><textarea class="replyType"></textarea></li>
@@ -409,7 +417,6 @@
 							</ul>
 						-->
 					<!-- 비밀댓글 끝-->
-					
 					<!-- //댓글 -->
 
 
