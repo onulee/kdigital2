@@ -214,12 +214,7 @@
 										data_html += '<li class="txt">'+data[i].c_content+'</li>'
 										data_html += '<li class="btn">'
 										data_html += '<a href="#" class="rebtn">수정</a>'
-										
-										
-										data_html += '<a onclick="commdeletebtn('+data[i].c_no+')" class="rebtn">삭제</a>'
-										
-										
-										
+										data_html += '<a onclick="commdeletebtn('+data[i].c_no +')" class="rebtn">삭제</a>'
 										data_html += '</li>'
 										data_html += '</ul>'
 									}
@@ -238,10 +233,11 @@
 								$.ajax({
 									url:'{% url "board:commdelete" %}',
 									type:'GET',
-									data:{ "c_no": c_no  },
+									data:{ "c_no": c_no },
 									dataType:'json',
 									success:function(data){
-										alert(data)
+										alert(data.result)
+										$('#'+c_no).remove()
 									},
 									error:function(){
 										alert('댓글삭제 실패')
