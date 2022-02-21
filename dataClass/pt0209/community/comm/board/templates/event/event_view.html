@@ -19,7 +19,9 @@
 <script type="text/javascript" src="{% static '/js/jquery.easing.1.3.js' %}"></script>
 <script type="text/javascript" src="{% static '/js/idangerous.swiper-2.1.min.js' %}"></script>
 <script type="text/javascript" src="{% static '/js/jquery.anchor.js' %}"></script>
-
+<style>
+	a{cursor: pointer;}
+</style>
 </head>
 <body>
 
@@ -196,7 +198,7 @@
 					<script>
 						//jQuery선언
 						$(function(){
-							//댓글 가져오는 ajax
+							//댓글list 가져오는 ajax
 							$.ajax({
 								url:"{% url 'board:comlist' %}",
 								type:"GET",
@@ -204,7 +206,7 @@
 								dataType:"json",
 								success:function(data){
 									// for문으로 댓글을 data_html저장해서 html소스 넣기
-									alert("성공")
+									//alert("성공")
 									var data_html=""
 									for ( var i in data){
 										data_html += '<ul>'
@@ -215,20 +217,41 @@
 										data_html += '<a href="#" class="rebtn">삭제</a>'
 										data_html += '</li>'
 										data_html += '</ul>'
-										//alert(data[i].c_content)
-
 									}
-
 									$(".replyBox").html(data_html)
-
 								},error:function(){
 									alert("실패")
 								}
 							})
-
-
-
 						})
+
+						// 댓글등록
+						function commwriteBtn(){
+							alert("등록호출")
+							//alert("비밀번호 : "+$(".replynum").val())
+							//alert("내용 : "+$(".replyType").val())
+							$.ajax({
+								url:'{% url "board:commwrite" %}',
+								type:'GET',
+								// 1.b_no,pw,content
+								data:{"b_no":{{b_no}},"c_pw":$(".replynum").val(),"c_content":$(".replyType").val() },
+								dataType:'json',
+								success:function(data){
+									alert(data)
+
+								},
+								error:function(){
+									alert("실패")
+								}
+
+
+
+							})
+
+							//ul댓글내용이 들어감.
+
+						}
+
 					</script>
 
 					<!-- 댓글-->
@@ -239,7 +262,7 @@
 								<p class="password">비밀번호&nbsp;&nbsp;<input type="password" class="replynum" /></p>
 								<textarea class="replyType"></textarea>
 							</li>
-							<li class="btn"><a href="#" class="replyBtn">등록</a></li>
+							<li class="btn"><a onclick="commwriteBtn()" class="replyBtn">등록</a></li>
 						</ul>
 						<p class="ntic">※ 비밀번호를 입력하시면 댓글이 비밀글로 등록 됩니다.</p>
 					</div>

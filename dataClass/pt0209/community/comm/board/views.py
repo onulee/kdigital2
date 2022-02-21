@@ -26,7 +26,7 @@ def event_view(request,b_no):
     return render(request,'event/event_view.html',context)
 
 
-# 하단댓글 Ajax리스트 해당게시판의 번호로 검색해서 가져옴.
+# 하단댓글 리스트(Ajax) -게시글번호로 검색해서 가져옴.
 def comlist(request):
     b_no = request.GET.get("b_no")
     print("views b_no : ",b_no)
@@ -34,6 +34,37 @@ def comlist(request):
     clist = list(qs.values())
     # context={'clist':qs}
     return JsonResponse(clist,safe=False)
+
+
+# 하단댓글 저장(Ajax)
+def commwrite(request):
+    # c_no 수동으로 1씩증가해서 저장시켜줌.
+    no = Comment.objects.aggregate(max_c_no=Max('c_no'))
+    max_no = no['max_c_no']   # b_no 최대 번호를 찾음 1.2.5. ... 26
+    max_no += 1          #최고 높은 숫자를 만들어줌. 27 = no+1
+    # models 1.c_no
+    c_no = max_no
+    id = request.session.get('session_id')  # session에서 id값 변수저장
+    print("views id : ",id)
+    # models 2.member객체
+    member = Member.objects.get(m_id=id)
+    b_no = request.GET.get("b_no")     # board b_no 변수저장
+    # models 3.fboard객체
+    fboard = Fboard.objects.get(b_no=b_no)
+    # 4.c_pw
+    c_pw = request.GET.get("c_pw")     #ajax으로 넘어온 pw 변수저장
+    # 5.c_content
+    c_content = request.GET.get("c_content")  #ajax으로 넘어온 content변수 저장
+    # 6.c_date
+    # 댓글저장
+    qs = Comment(c_no=c_no,member=member,fboard=fboard,c_pw=c_pw,c_content=c_content)
+    qs.save()
+    # 저장시킨 댓글, 다시 검색
+    read_qs = Comment.objects.get(c_no=c_no)
+    # json으로 보내기 위해 list타입으로 변경
+    comment = list(read_qs.values())
+    return JsonResponse(comment,safe=False)
+
 
 
 
