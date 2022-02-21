@@ -38,12 +38,18 @@ def comlist(request):
 
 # 하단댓글 저장(Ajax)
 def commwrite(request):
-    # c_no 수동으로 1씩증가해서 저장시켜줌.
-    no = Comment.objects.aggregate(max_c_no=Max('c_no'))
-    max_no = no['max_c_no']   # b_no 최대 번호를 찾음 1.2.5. ... 26
-    max_no += 1          #최고 높은 숫자를 만들어줌. 27 = no+1
-    # models 1.c_no
-    c_no = max_no
+    
+    # c_no 1씩증가 함수
+    def comm_count():
+        # c_no 수동으로 1씩증가해서 저장시켜줌.
+        no = Comment.objects.aggregate(max_c_no=Max('c_no'))
+        max_no = no['max_c_no']   # b_no 최대 번호를 찾음 1.2.5. ... 26
+        max_no += 1          #최고 높은 숫자를 만들어줌. 27 = no+1
+        return max_no
+    # 1씩증가 함수 호출
+    c_no = comm_count()
+    
+    
     id = request.session.get('session_id')  # session에서 id값 변수저장
     print("views id : ",id)
     # models 2.member객체
@@ -59,11 +65,13 @@ def commwrite(request):
     # 댓글저장
     qs = Comment(c_no=c_no,member=member,fboard=fboard,c_pw=c_pw,c_content=c_content)
     qs.save()
-    # 저장시킨 댓글, 다시 검색
-    read_qs = Comment.objects.get(c_no=c_no)
-    # json으로 보내기 위해 list타입으로 변경
-    comment = list(read_qs.values())
-    return JsonResponse(comment,safe=False)
+    context = {
+        "c_no": qs.c_no, 
+        "member_id": qs.member_id, 
+        "c_pw": qs.c_pw,
+        "c_content":qs.c_content,
+        "c_date":qs.c_date }
+    return JsonResponse(context)
 
 
 

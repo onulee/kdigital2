@@ -209,12 +209,12 @@
 									//alert("성공")
 									var data_html=""
 									for ( var i in data){
-										data_html += '<ul>'
+										data_html += '<ul id='+data[i].c_no +'>'
 										data_html += '<li class="name">'+data[i].member_id+'<span>['+data[i].c_date+']</span></li>'
 										data_html += '<li class="txt">'+data[i].c_content+'</li>'
 										data_html += '<li class="btn">'
 										data_html += '<a href="#" class="rebtn">수정</a>'
-										data_html += '<a href="#" class="rebtn">삭제</a>'
+										data_html += '<a onclick="commdeletebtn()" class="rebtn">삭제</a>'
 										data_html += '</li>'
 										data_html += '</ul>'
 									}
@@ -223,11 +223,36 @@
 									alert("실패")
 								}
 							})
-						})
+						}) //jQuery
+
+						//댓글삭제
+						function commdeletebtn(){
+						    //alert("댓글삭제 호출")
+							if(confirm("댓글을 삭제하시겠습니까?")){
+								$.ajax({
+									url:'',
+									type:'GET',
+									data:{"b_no":b_no},
+									dataType:'json',
+									success:function(data){
+	
+									},
+									error:function(){
+										alert('댓글삭제 실패')
+									}
+								})
+							}else{
+								return false
+							}
+						}//댓글삭제
 
 						// 댓글등록
 						function commwriteBtn(){
 							alert("등록호출")
+							if($(".replyType").val().length<=2){
+								alert("2글자 이상 입력하셔야 저장이 가능합니다.")
+								return false
+							}
 							//alert("비밀번호 : "+$(".replynum").val())
 							//alert("내용 : "+$(".replyType").val())
 							$.ajax({
@@ -237,17 +262,27 @@
 								data:{"b_no":{{b_no}},"c_pw":$(".replynum").val(),"c_content":$(".replyType").val() },
 								dataType:'json',
 								success:function(data){
-									alert(data)
+									var data_html=""
+									data_html += '<ul id='+data.c_no +'>'
+									data_html += '<li class="name">'+data.member_id+'<span>['+data.c_date+']</span></li>'
+									data_html += '<li class="txt">'+data.c_content+'</li>'
+									data_html += '<li class="btn">'
+									data_html += '<a href="#" class="rebtn">수정</a>'
+									data_html += '<a href="#" class="rebtn">삭제</a>'
+									data_html += '</li>'
+									data_html += '</ul>'
+									//html 모두 지운후 추가, prepend 처음에 추가, uppend 마지막 추가
+									$(".replyBox").prepend(data_html)
+
+									// 입력된 글자 삭제
+									$(".replynum").val("")
+									$(".replyType").val("")
 
 								},
 								error:function(){
 									alert("실패")
 								}
-
-
-
 							})
-
 							//ul댓글내용이 들어감.
 
 						}
@@ -269,6 +304,10 @@
 					<!-- 댓글 추가 됨 -->
 					<div class="replyBox">
 						
+
+
+
+
 					</div>
 
 					<!--댓글수정입력창-->
