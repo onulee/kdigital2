@@ -15,10 +15,13 @@ df = pd.DataFrame(data,index=['1번','2번','3번','4번','5번','6번','7번','
 df.index.name='지원번호'
 print(df)
 # csv로 저장
-# df.to_csv('score.csv',encoding='utf-8-sig')
+# df.to_csv('score.csv',encoding='utf-8-sig',index=False)
+df.to_csv('score.csv',encoding='utf-8-sig')
+print(df)
 # txt로 저장
 # df.to_csv('score.txt', sep='\t')
-# excel로 저장
-df.to_excel('score.xlsx',index=False)
+# excel로 저장, index제외후 저장
+# df.to_excel('score.xlsx',index=False)
+# df.to_excel('score.xlsx')
 
 

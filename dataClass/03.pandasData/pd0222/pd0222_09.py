@@ -26,7 +26,22 @@ print(df)
 # 데이터의 1번째 데이터를 삭제하고 가져옴.
 # nrows 는 현재출력하는 데이터 개수를 지정
 # skiprows=3 3번째줄까지 삭제하고 가져옴, [1,3]=1번,3번 제외하고 가져옴.
-df = pd.read_csv('score.csv',skiprows=[1,3],nrows=3)
+# df = pd.read_csv('score.csv',skiprows=[1,3],nrows=3)
+# print(df)
+
+# txt파일은 구분자를 넣어서 가져옴.
+# df = pd.read_csv('score.txt','\t')
+# print(df)
+
+# 엑셀파일 불러오기
+# df = pd.read_excel('score.xlsx')
+# print(df)
+
+# # index 지원번호컬럼을 지정
+# df.set_index('지원번호',inplace=True)
+# print(df)
+
+df = pd.read_excel('score.xlsx',index_col='지원번호')
 print(df)
 
 
