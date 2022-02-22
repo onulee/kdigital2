@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,td{border:1px solid black; 
+            border-collapse:collapse;
+        text-align: center;}
+        table{width:550px; }
+        th{width:200px;}
+    </style>
+</head>
+<body>
+    <h2>학생리스트</h2>
+    {% comment %} <h3>학생수 : {{ count }}</h3> {% endcomment %}
+    <table>
+        <tr>
+            <th>학생이름</th>
+            <th>학과</th>
+        </tr>
+        {% if stuList %}
+            {% for stu  in stuList  %}
+                <tr>
+                    <td>
+                        <a href="{% url 'students:regview' stu.s_name stu.s_major %}">{{stu.s_name}}</a>
+                        {% comment %}<a href="/students/regview?name={{stu.s_name}}">{{stu.s_name}}</a> {% endcomment %}
+                    </td>
+                    <td>{{stu.s_major}}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="5">데이터가 없습니다.</td>
+        </tr>
+        {% endif %}
+    </table>
+    <br>
+    <button><a href="{% url 'students:reg' %}">학생등록</a></button>
+    <button><a href="{% url 'index' %}">HOME</a></button>
+
+    <br>
+    <img src="{% static 'images/students/iu02.jpg' %}">
+    
+</body>
+</html>
