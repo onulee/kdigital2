@@ -3,12 +3,15 @@ import pandas as pd
 df = pd.read_excel('pandas_code.xlsx')
 # print(df.describe())
 
-print(df['영어'].count())
-print(df['sw특기'].count())
+# 영어 60점 이상, 영어 컬럼.count만 출력을 해보세요.
+# 
 
-print(df['학교'].unique())  # 중복제거후 유일값 출력
-print(df['학교'].nunique()) # 중복제거 후 유일값 개수 출력
-print(df['학교'])
+# print(df['영어'].count())
+# print(df['sw특기'].count())
+
+# print(df['학교'].unique())  # 중복제거후 유일값 출력
+# print(df['학교'].nunique()) # 중복제거 후 유일값 개수 출력
+# print(df['학교'])
 
 # 1개의 컬럼만 출력
 # print(df['국어'].describe())

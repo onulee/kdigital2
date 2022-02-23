@@ -19,11 +19,15 @@ print(df.fillna('없음'))
 # axis -> index:row삭제, columns:컬럼삭제
 # how -> any:1개라도 nan있으면 삭제, all:모두 nan 일때 삭제
 # print(df.dropna(axis='columns',how='any',inplace=True))
-df['학교'] = np.nan
+# df.loc['이름'] = np.nan
+df.loc['1번'] = np.nan
 print(df)
 
+# dropna axis=index : row를 삭제, all 모든 데이터가 nan 경우 row삭제
+print(df.dropna(axis='index',how='all'))
+
 # 학교 컬럼이 모두 nan이므로 삭제
-print(df.dropna(axis='columns',how='all'))
+# print(df.dropna(axis='columns',how='all'))
 
 
 
