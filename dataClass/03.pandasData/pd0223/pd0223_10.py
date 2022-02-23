@@ -11,9 +11,18 @@ df = pd.read_excel('202201_202201_연령별인구현황_월간.xlsx',skiprows=3,
 # index 0번째 출력
 print(df.iloc[0])
 # index 0번째 데이터값을 1,915,401 -> 1915401 ,를 삭제(replace)
-df.iloc[0] = df.iloc[0].str.replace(',','').astype(int)
-print(df.iloc[0])
+# df.iloc[0] = df.iloc[0].str.replace(',','').astype(int)
+# print(df.iloc[0])
+# print(df)
+# print(df.info())
+
+# 컬럼 0번째 데이터 값을 1,915,401 -> 1915401 ,를 삭제(replace)
+df['0~9세'] = df['0~9세'].str.replace(',','').astype(int)
+print(df['0~9세'])
+print(df.info())
 print(df)
 
-print(df['0~9세'])
+# 0~9세 100000이상인 index를 출력하시오.
+print( df[~(df['0~9세'] >100000)] )
+
 
