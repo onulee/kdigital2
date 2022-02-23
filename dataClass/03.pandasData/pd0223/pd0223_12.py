@@ -18,3 +18,27 @@ print(df.loc[fdata,['이름','학교','영어','수학']])
 
 fdata = df['이름'].str.contains('Darcy')
 print(df[fdata])
+
+print(df)
+
+# contains, isin 형태 2가지로 출력하시오.(대소문자 구분 없음)
+# 이름에 to문자가 들어 있는 사람이면서,  sw특기가 python 인 사람을 출력하시오.
+
+langs=['python']
+fdata = df['sw특기'].str.lower().isin(langs)
+print(df[fdata])
+
+# case= False 대소문자 구분없이 to검색, case=True 대소문자 구분검색
+namedata = df['이름'].str.contains('to', case=False)
+print(df[namedata])
+# print(df)
+
+sdata = df['학교']=='단지고'
+
+# & 먼저 처리하고 |를 처리함.
+print(df[(fdata) & (namedata) & (sdata) ] )
+# print(df[(fdata) | (namedata) & (sdata) ] )
+# print(df[(fdata) & (namedata) | (sdata) ] )
+
+ 
+
