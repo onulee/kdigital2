@@ -17,9 +17,18 @@ print(df)
 # df.drop(index=['5번','6번'],inplace=True)
 # print(df)
 
-# 국어점수 60점 이하
-fdata = df['국어'] <= 60
-print(df[fdata])
-# 국어점수 60점 이하 인 index 삭제
-df.drop(index=df[fdata].index,inplace=True)
+# # 국어점수 60점 이하
+# fdata = df['국어'] <= 60
+# print(df[fdata])
+# # 국어점수 60점 이하 인 index 삭제
+# df.drop(index=df[fdata].index,inplace=True)
+# print(df)
+# 컬럼전체 list로 변경
+cols = list(df.columns)
+print(cols)
+# 슬라이싱:list, 1개str->list변경해야 함.
+df = df[cols[0:2]+[cols[9]]+cols[2:8]+cols[10:12]+[cols[8]] ]
 print(df)
+
+# 파일저장
+df.to_excel('score.xlsx')
