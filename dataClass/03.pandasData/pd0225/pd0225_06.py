@@ -6,6 +6,15 @@
 # print(df.iloc[0])         #index 번호로 출력
 # print(df.iloc[0:3])         #index 슬라이싱 출력
 import pandas as pd
-df = pd.read_excel('pandas_code.xlsx')
+df = pd.read_excel('score.xlsx')
 print(df)
+
+# school = df.groupby('학교')
+# print(school['학년'].value_counts())
+# print(df.groupby('학교')['학년'].value_counts())
+# print(df.groupby('학교')['학년'].value_counts())
+
+# print(df.groupby('학교')['학년'].value_counts(normalize=True).loc['구로고'])
+print(df.groupby('학교')['학년'].value_counts(normalize=True).loc['디지털고'])
+print(df.groupby('학교')['학년'].value_counts(normalize=True))
 
