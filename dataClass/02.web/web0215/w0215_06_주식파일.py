@@ -12,8 +12,9 @@ soup = BeautifulSoup(res.text,"lxml")
 filename ="시가총액1-200.csv"
 # 파일 저장 설정
 f = open(filename,"w",encoding="utf-8-sig",newline="")
-# 파일 저장
+# 엑셀 파일 저장
 writer = csv.writer(f)
+# title split을 해줌으로 list타입변환
 title="N	종목명	현재가	전일비	등락률	액면가	시가총액	상장주식수	외국인비율	거래량	PER	ROE".split("\t")
 print(type(title))
 writer.writerow(title)
@@ -27,8 +28,9 @@ for row in data_rows:
     columns = row.find_all("td")  # 1개, 13개
     if len(columns) <= 1:
         continue
+    # 1줄 for문은 data type: list 형태임.
     data = [column.get_text().strip() for column in columns ]
-    # data type: list
+    # 데이터 저장
     writer.writerow(data)
     # print(data)
 

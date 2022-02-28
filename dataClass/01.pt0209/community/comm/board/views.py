@@ -12,10 +12,48 @@ import urllib # 한글인코딩
 import requests # 웹스크롤링
 import json
 from django.forms.models import model_to_dict
+import cx_Oracle as ora
+import pandas as pd
 
-
+# db접속정보 메소드
+def connections():
+    try:
+        conn=ora.connect('system/1234@localhost:1521/orcl')
+    except Exception as e:
+        print('예외 발생')
+    return conn
+    
 # 공지사항 리스트
 def notice(request):
+    # 지원번호,이름,학교,학년 4컬럼 가져옴.
+    df = pd.read_excel('C:\js_work\score.xlsx',usecols='A:D',dtype={0:str,1:str,2:str,3:str})
+    # 데이터를 tuple()형태의 list타입으로 데이터 저장.
+    rows = [ tuple(x) for x in df.to_records(index=False) ]
+    
+    conn = connections()
+    cursor = conn.cursor()
+    cursor.execute('delete from score')
+    sql_score = 'insert into score values(:1,:2,:3,:4)'
+    # execute : 1번 구문 실행
+    # executemany : 여러번 구문 실행
+    cursor.executemany(sql_score,rows)
+    conn.commit()
+    
+    
+    
+    # # 1개 db접속
+    # conn = connections()
+    # print(conn.version) # conn버전 확인
+    # # sqlDevelpor 창을 열었다고 생각하면 됨.
+    # cursor = conn.cursor()
+    # # sql구문에서 특정위치에 데이터를 받음.
+    # sql_insert = 'insert into score values (:s_no,:name,:school,:grade)'
+    # # sql구문 실행
+    # cursor.execute(sql_insert,s_no='4번',name='김수찬',school='구로고',grade=1)
+    # cursor.close()
+    # conn.commit()
+    
+    
     # 페이지 번호가 넘어와야 함.
     # page
     qs = Fboard.objects.all()
@@ -242,6 +280,9 @@ def bwriteOk(request):
     b_no = max_no
     
     qs = Fboard(b_no=b_no,member=member,b_title=title,b_content=content,b_group=b_no,b_img=img)
+    # b_no number
+    # memberid varchar2
+    
     qs.save()
     # Fboard.objects.create(b_id=id,b_title=title,b_content=content)
     return redirect('board:blist')
