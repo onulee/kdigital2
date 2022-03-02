@@ -26,10 +26,17 @@ def connections():
 # 공지사항 리스트
 def notice(request):
     # 지원번호,이름,학교,학년 4컬럼 가져옴.
-    df = pd.read_excel('C:\js_work\score.xlsx',usecols='A:D',dtype={0:str,1:str,2:str,3:str})
+    # df = pd.read_excel('C:\js_work\score.xlsx',usecols='A:D',dtype={0:str,1:str,2:str,3:str})
+    df = pd.read_excel('C:\js_work\score.xlsx',usecols='A:D',dtype={0:str,1:str,2:str,3:int})
     # 데이터를 tuple()형태의 list타입으로 데이터 저장.
-    rows = [ tuple(x) for x in df.to_records(index=False) ]
-    
+    # rows = [ tuple(x) for x in df.to_records(index=False) ]
+    rows=[]
+    for x in df.to_records(index=False):
+        # 1행을 row list를 생성해서 x데이터를 입력 - int인경우 한번더 int변환
+        row=[  x[0],x[1],x[2],int(x[3]) ]
+        # 전체 list에 담음.
+        rows.append(row)
+        
     conn = connections()
     cursor = conn.cursor()
     cursor.execute('delete from score')
@@ -38,6 +45,11 @@ def notice(request):
     # executemany : 여러번 구문 실행
     cursor.executemany(sql_score,rows)
     conn.commit()
+    
+    # oracle db에서 df변환
+    query = 'select * from score'
+    df=pd.read_sql_query(query,connections())
+    print(df)
     
     
     
