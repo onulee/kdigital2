@@ -69,6 +69,9 @@ def notice(request):
     # 페이지 번호가 넘어와야 함.
     # page
     qs = Fboard.objects.all()
+    # objects.all() querySet 데이터를 dataFrame바로 변환
+    obeject_df3 = pd.DataFrame.from_records(qs.values())
+    print("object.all() : ",obeject_df3)
     context = {'blist':qs}
     return render(request,'customer/notice.html',context)
 
