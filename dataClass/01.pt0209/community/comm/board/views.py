@@ -70,6 +70,8 @@ def notice(request):
     # page
     qs = Fboard.objects.all()
     # objects.all() querySet 데이터를 dataFrame바로 변환
+    # obeject_df3 = pd.DataFrame(qs)
+    # obeject_df3 = pd.DataFrame.from_records(qs)
     obeject_df3 = pd.DataFrame.from_records(qs.values())
     print("object.all() : ",obeject_df3)
     context = {'blist':qs}
