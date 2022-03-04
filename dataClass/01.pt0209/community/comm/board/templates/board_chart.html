@@ -15,7 +15,7 @@
                 $.ajax({
                     url:"/board/chart_data",
                     type:"get",
-                    data:{ },
+                    data:{ 'year':202203     },
                     dataType:"json",
                     success:function(data){
                         chartLabels=[];
@@ -24,6 +24,7 @@
                         $.each(data.chart_data,function(key,value){
                             //alert("key : "+key);
                             //alert("value : "+value);
+                            // 여기에 json데이터를 다시label,data다시 넣어줌.
                             chartLabels.push(value.iyear); //[2015,2016,2017,2018,2019,2020,2021]
                             chartData.push(value.iincome); //[1300,...]
                         });
