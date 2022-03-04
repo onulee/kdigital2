@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Document</title>
+    <script>
+        $(function(){
+            let ctx = document.getElementById('myChart').getContext('2d');
+            let chart = new Chart(ctx, {
+                type: 'bar',
+                data: chartData,
+                options: chartOptions
+            })
+        })
+        
+        // chart data and options
+        let chartData = {
+            labels: ['A', 'B', 'C'],
+            datasets: [
+                {
+                    label: 'y axis left',
+                    yAxisID: 'y-left',
+                    data: [10, 20, 30],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: 'y axis right',
+                    yAxisID: 'y-right',
+                    data: [100, 500, 300],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }
+            ]
+        }
+        
+        let chartOptions = {
+            responsive:true,
+            // maintainAspectRatio: false,
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'X Axis Title'
+                    }
+                },
+                'y-left': {
+                    type: 'linear',
+                    position: 'left',
+                    title: {
+                        display: true,
+                        text: 'Y Axis Left'
+                    },
+                    grid: {
+                        display: false
+                    }
+                },
+                'y-right': {
+                    type: 'linear',
+                    position: 'right',
+                    title: {
+                        display: true,
+                        text: 'Y Axis Right'
+                    },
+                    ticks: {
+                        callback: (val) => (val.toExponential())
+                    },
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        canvas{width:400px; height:400px;}
+    </style>
+</head>
+<body>
+    <div>
+        <h2>년도별 매출현황</h2>
+    </div>
+    <h3>매출액그래프</h3>
+    <div class="myCanvas">
+        <canvas id="myChart" width="100" height="50"></canvas>
+    </div>
+    
+</body>
+</html>
