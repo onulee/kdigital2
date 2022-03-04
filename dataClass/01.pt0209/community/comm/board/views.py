@@ -15,6 +15,26 @@ from django.forms.models import model_to_dict
 import cx_Oracle as ora
 import pandas as pd
 
+# 차트 그리기
+def chart(request):
+    return render(request,'board_chart.html')
+
+# 차트 데이터 가져오기(Ajax)
+def chart_data(request):
+    # c_no = request.GET.get('ajax_data')
+    # qs = Comment.objects.get(c_no=c_no)
+    chart_data = [{"iyear":2015,"iincome":1300},
+            {"iyear":2016,"iincome":1800},
+            {"iyear":2017,"iincome":1000},
+            {"iyear":2018,"iincome":1100},
+            {"iyear":2019,"iincome":1500},
+            {"iyear":2020,"iincome":1200},
+            {"iyear":2021,"iincome":1600}]
+    context={'chart_data':chart_data}
+    return JsonResponse(context)
+
+
+
 # db접속정보 메소드
 def connections():
     try:
@@ -22,6 +42,7 @@ def connections():
     except Exception as e:
         print('예외 발생')
     return conn
+
     
 # 공지사항 리스트
 def notice(request):

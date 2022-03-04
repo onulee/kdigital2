@@ -11,6 +11,7 @@
     {% if request.session.session_id %}
        <p>{{request.session.session_id}}님 환영합니다.</p>
        <ul>
+           <li><a href="{% url 'board:chart' %}">차트그리기</a></li>
            <li><a href="{% url 'board:notice' %}">공지사항</a></li>
            <li><a href="{% url 'member:join01' %}">회원가입</a></li>
            <li><a href="{% url 'board:blist' %}">게시판리스트</a></li>

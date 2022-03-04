@@ -4,6 +4,8 @@ from django.urls import include, path
 app_name='board'
 urlpatterns = [
     path('customer/notice/', views.notice,name='notice'),      # 공지사항 리스트
+    path('chart/', views.chart,name='chart'),      # board 그래프
+    path('chart_data/', views.chart_data,name='chart_data'),      # board 그래프 data
     path('<str:b_no>/event/event_view/', views.event_view,name='event_view'),  # 이벤트뷰
     
     
